@@ -30,8 +30,7 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 
 @SpringBootTest
@@ -169,7 +168,7 @@ public class ControllerTests {
         // Each of these two calls should return an apppropriate HTTP Status in accordance with REST best practices
         // Assert that the appropriate responses have been received from the endpoint
 
-        throw new NotYetImplementedException();
+
     }
 
 
@@ -184,7 +183,7 @@ public class ControllerTests {
                                 .content(
                                         jsonWorkflowEntity.write( WorkflowEntity
                                                 .builder()
-                                                .id(Long.valueOf(123123))
+                                                //.id(Long.valueOf(123123))
                                                 .workflowId(Long.valueOf(123123))
                                                 .kpfConfirmed(true)
                                                 .yjbYp(Long.valueOf(11232))
@@ -217,9 +216,101 @@ public class ControllerTests {
 
     }
 
+    @Test
+    public void test1_shouldTestEndpointToRetrieveWorkflowByIdWhenDoesNotExists() throws Exception {
+        // given
+        given(workflowRepoService.findWorkflowById(Long.valueOf(2)))
+                .willThrow(new Exception("Does not exist"));
+
+        // when
+        MockHttpServletResponse response = mockMvc.perform(
+                        get("/api/v1/tests-controller/workflow/2")
+                                .accept(MediaType.APPLICATION_JSON))
+                .andReturn().getResponse();
+
+        // then
+        Assertions.assertEquals(HttpStatus.NOT_FOUND.value(),response.getStatus());
+        Assertions.assertEquals(true,response.getContentAsString().isEmpty());
+    }
+
+
 
     @Test
     public void test4_shouldTestEndpointToUpdateExistingWorkflow() throws Exception {
+
+
+
+
+
+        WorkflowEntity existedWorkflowEntity = WorkflowEntity
+                .builder()
+                .id(Long.valueOf(1234))
+                .workflowId(Long.valueOf(123123))
+                .kpfConfirmed(true)
+                .yjbYp(Long.valueOf(11232))
+                .workflowState("IN PROGRESS")
+                .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                .createdBy("katherine.simmons")
+                .modifiedBy("katherine.simmons")
+                .metadata(null)
+                .process("placementProcess")
+                .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
+                .previousState("STARTED")
+                .taskStatus(null)
+                .taskMetadata(null).build();
+
+        // given
+        given(workflowRepoService.findWorkflowById(Long.valueOf(1234)))
+                .willReturn(existedWorkflowEntity);
+
+
+
+        // when
+        MockHttpServletResponse responseForExistedWF = mockMvc.perform(
+                        get("/api/v1/tests-controller/workflow/1234")
+                                .accept(MediaType.APPLICATION_JSON))
+                .andReturn().getResponse();
+
+        String content = responseForExistedWF.getContentAsString();
+
+        existedWorkflowEntity = jsonWorkflowEntity.parseObject(content);
+
+        // when
+        MockHttpServletResponse response = mockMvc
+                .perform(
+                        put("/api/v1/tests-controller/updateWorkflow")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(
+                                        jsonWorkflowEntity.write( WorkflowEntity
+                                                .builder()
+                                                .id(Long.valueOf(1234))
+                                                .workflowId(Long.valueOf(123123))
+                                                .kpfConfirmed(true)
+                                                .yjbYp(Long.valueOf(11232))
+                                                .workflowState("TASK COMPLETED")
+                                                .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                                                .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                                                .createdBy("rabia.rabia")
+                                                .modifiedBy("rabia.rabia")
+                                                .metadata(null)
+                                                .process("placementProcess")
+                                                .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
+                                                .previousState("STARTED")
+                                                .taskStatus(null)
+                                                .taskMetadata(null).build()).getJson()
+                                )).andReturn().getResponse();
+        content = response.getContentAsString();
+
+        WorkflowEntity updatedWorkflowEntity = jsonWorkflowEntity.parseObject(content);
+
+        // then
+        Assertions.assertEquals(HttpStatus.CREATED.value(),response.getStatus());
+        Assertions.assertEquals(true,updatedWorkflowEntity instanceof WorkflowEntity );
+        Assertions.assertNotEquals(updatedWorkflowEntity.getWorkflowState(),existedWorkflowEntity.getWorkflowState());
+
+
+
         // Create and test a controller PUT endpoint to an existing entry within the workflow table
         // As a parameter, the Controller should receive a JSON payload that represents an existing workflow entity
         //    where one or more of the columns has changed
@@ -281,10 +372,5 @@ public class ControllerTests {
     static void done() {
         log.info("@AfterAll - executed after all test methods.");
     }
-//    public void shouldRaiseAnException() throws Exception {
-//        Assertions.assertThrows(Exception.class, () -> {
-//            //...
-//        });
-//    }
 
 }

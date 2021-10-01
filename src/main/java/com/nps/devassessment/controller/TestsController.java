@@ -35,5 +35,12 @@ public class TestsController {
         return Optional.ofNullable(workflowRepoService.findWorkflowByYjbYpId(YjbYpId));
     }
 
+    @PutMapping("/updateWorkflow")
+    @ResponseBody
+    public WorkflowEntity updateWorkflowEntity(@RequestBody WorkflowEntity workflowEntity) {
+        log.info("inside Controller's updateWorkflowEntity method");
+        return workflowRepoService.saveWorkFlowEntity(workflowEntity);
+    }
+
 
 }
