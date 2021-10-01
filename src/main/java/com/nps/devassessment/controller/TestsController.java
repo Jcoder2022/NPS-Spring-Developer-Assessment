@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/v1/tests-controller")
 @Slf4j
@@ -16,10 +18,13 @@ public class TestsController {
 
     @PostMapping("/createWorkflow")
     public WorkflowEntity createWorkFlow(@RequestBody WorkflowEntity workflowEntity) {
-        log.info("Inside Controller createWorkflow method!");
+        log.info("Inside Controller's createWorkflow method!");
         return  workflowRepoService.saveWorkFlowEntity(workflowEntity);
     }
 
-    @GetMapping()
-
+    @GetMapping("/workflow/{id}")
+    public Optional<WorkflowEntity> findWorkflowById(@PathVariable("id") Long id){
+        log.info("inside Controller's findWorkflowById method");
+        return Optional.ofNullable(workflowRepoService.findWorkflowById(id));
+    }
 }

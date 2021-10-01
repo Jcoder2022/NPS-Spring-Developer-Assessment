@@ -24,9 +24,12 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.junit.jupiter.api.*;
 
 import java.sql.Timestamp;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 
 @SpringBootTest
@@ -65,33 +68,42 @@ public class ControllerTests {
 
     @Test
     public void test1_shouldTestEndpointToRetrieveWorkflowById() throws Exception {
+
+        WorkflowEntity workflowEntity = WorkflowEntity
+                .builder()
+                .id(Long.valueOf(1234))
+                .workflowId(Long.valueOf(123123))
+                .kpfConfirmed(true)
+                .yjbYp(Long.valueOf(11232))
+                .workflowState("IN PROGRESS")
+                .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                .createdBy("katherine.simmons")
+                .modifiedBy("katherine.simmons")
+                .metadata(null)
+                .process("placementProcess")
+                .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
+                .previousState("STARTED")
+                .taskStatus(null)
+                .taskMetadata(null).build();
+
+        // given
+        given(workflowRepoService.findWorkflowById(Long.valueOf(1234)))
+                .willReturn(workflowEntity);
+
         // when
-        MockHttpServletResponse response = mockMvc
-                .perform(
-                    post("/api/v1/tests-controller/createWorkflow")
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .content(
-                                    jsonWorkflowEntity.write( WorkflowEntity
-                                            .builder()
-                                                    .id(Long.valueOf(123123))
-                                            .workflowId(Long.valueOf(123123))
-                                                    .kpfConfirmed(true)
-                                                    .yjbYp(Long.valueOf(11232))
-                                                    .workflowState("IN PROGRESS")
-                                                    .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
-                                                    .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
-                                                    .createdBy("katherine.simmons")
-                                                    .modifiedBy("katherine.simmons")
-                                                    .metadata(null)
-                                                    .process("placementProcess")
-                                                    .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
-                                                    .previousState("STARTED")
-                                                    .taskStatus(null)
-                                                    .taskMetadata(null).build()).getJson()
-                )).andReturn().getResponse();
+        MockHttpServletResponse response = mockMvc.perform(
+                        get("/api/v1/tests-controller/workflow/1234")
+                                .accept(MediaType.APPLICATION_JSON))
+                .andReturn().getResponse();
 
         // then
-        Assertions.assertEquals(HttpStatus.CREATED.value(),response.getStatus());
+        Assertions.assertEquals(HttpStatus.OK.value(),response.getStatus());
+        Assertions.assertEquals(jsonWorkflowEntity.write(workflowEntity).getJson(),response.getContentAsString());
+
+
+
+
         // Create and test a controller GET endpoint to retrieve an entry from the workflow table
         // As a parameter, the Controller should receive Integer value (representing the 'id' of the workflow)
         // As a response, the Controller should return a JSON entity representing the workflow
@@ -100,7 +112,7 @@ public class ControllerTests {
         // Each of these two calls should return an apppropriate HTTP Status in accordance with REST best practices
         // Assert that the appropriate responses have been received from the endpoint
 
-        throw new NotYetImplementedException();
+
     }
 
 
@@ -122,6 +134,37 @@ public class ControllerTests {
 
     @Test
     public void test3_shouldTestEndpointToCreateANewWorkflow() throws Exception {
+
+        // when
+        MockHttpServletResponse response = mockMvc
+                .perform(
+                        post("/api/v1/tests-controller/createWorkflow")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(
+                                        jsonWorkflowEntity.write( WorkflowEntity
+                                                .builder()
+                                                .id(Long.valueOf(123123))
+                                                .workflowId(Long.valueOf(123123))
+                                                .kpfConfirmed(true)
+                                                .yjbYp(Long.valueOf(11232))
+                                                .workflowState("IN PROGRESS")
+                                                .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                                                .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                                                .createdBy("katherine.simmons")
+                                                .modifiedBy("katherine.simmons")
+                                                .metadata(null)
+                                                .process("placementProcess")
+                                                .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
+                                                .previousState("STARTED")
+                                                .taskStatus(null)
+                                                .taskMetadata(null).build()).getJson()
+                                )).andReturn().getResponse();
+
+        // then
+        Assertions.assertEquals(HttpStatus.CREATED.value(),response.getStatus());
+        //Assertions.assertEquals(HttpStatus.CREATED.value(),);
+
+
         // Create and test a controller POST endpoint to create a new entry within the workflow table
         // The Controller should receive a JSON payload that represents a workflow entity (the 'id' column
         //    will have to be null or not present as the workflow has not yet been written to the table)
@@ -130,7 +173,7 @@ public class ControllerTests {
         // Assert that the appropriate response have been received from the endpoint
         // Assert that the response body contains a workflow object, and that the id column is populated
 
-        throw new NotYetImplementedException();
+
     }
 
 
