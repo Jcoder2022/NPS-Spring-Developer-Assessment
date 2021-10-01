@@ -1,17 +1,32 @@
 package com.nps.devassessment.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nps.devassessment.entity.WorkflowEntity;
+import com.nps.devassessment.service.WorkflowRepoService;
 import org.hibernate.cfg.NotYetImplementedException;
-import org.junit.Before;
-import org.junit.Test;
+//import org.junit.Before;
+//import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.json.JacksonTester;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.client.match.ContentRequestMatchers;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.junit.jupiter.api.*;
+
+import java.sql.Timestamp;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 
 @SpringBootTest
@@ -26,16 +41,57 @@ public class ControllerTests {
     @InjectMocks
     private TestsController testsController;
 
+    @MockBean
+    private WorkflowRepoService workflowRepoService;
 
-    @Before
-    public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(testsController).build();
+    // This object will be magically initialized by the initFields method below.
+    private JacksonTester<WorkflowEntity> jsonWorkflowEntity;
+
+    @BeforeAll
+    static void setup() {
+        log.info("@BeforeAll- executes once before all test methods in this class");
     }
+    @BeforeEach
+    void init() {
+        // We would need this line if we would not use the MockitoExtension
+        // MockitoAnnotations.initMocks(this);
+        // Here we can't use @AutoConfigureJsonTesters because there isn't a Spring context
+        JacksonTester.initFields(this, new ObjectMapper());
 
+        mockMvc = MockMvcBuilders.
+                standaloneSetup(testsController).
+                build();
+    }
 
     @Test
     public void test1_shouldTestEndpointToRetrieveWorkflowById() throws Exception {
+        // when
+        MockHttpServletResponse response = mockMvc
+                .perform(
+                    post("/api/v1/tests-controller/createWorkflow")
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content(
+                                    jsonWorkflowEntity.write( WorkflowEntity
+                                            .builder()
+                                                    .id(Long.valueOf(123123))
+                                            .workflowId(Long.valueOf(123123))
+                                                    .kpfConfirmed(true)
+                                                    .yjbYp(Long.valueOf(11232))
+                                                    .workflowState("IN PROGRESS")
+                                                    .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                                                    .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                                                    .createdBy("katherine.simmons")
+                                                    .modifiedBy("katherine.simmons")
+                                                    .metadata(null)
+                                                    .process("placementProcess")
+                                                    .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
+                                                    .previousState("STARTED")
+                                                    .taskStatus(null)
+                                                    .taskMetadata(null).build()).getJson()
+                )).andReturn().getResponse();
+
+        // then
+        Assertions.assertEquals(HttpStatus.CREATED.value(),response.getStatus());
         // Create and test a controller GET endpoint to retrieve an entry from the workflow table
         // As a parameter, the Controller should receive Integer value (representing the 'id' of the workflow)
         // As a response, the Controller should return a JSON entity representing the workflow
@@ -46,6 +102,8 @@ public class ControllerTests {
 
         throw new NotYetImplementedException();
     }
+
+
 
 
     @Test
@@ -129,4 +187,20 @@ public class ControllerTests {
 
         throw new NotYetImplementedException();
     }
+
+    @AfterEach
+    void tearDown() {
+        log.info("@AfterEach - executed after each test method.");
+    }
+
+    @AfterAll
+    static void done() {
+        log.info("@AfterAll - executed after all test methods.");
+    }
+//    public void shouldRaiseAnException() throws Exception {
+//        Assertions.assertThrows(Exception.class, () -> {
+//            //...
+//        });
+//    }
+
 }

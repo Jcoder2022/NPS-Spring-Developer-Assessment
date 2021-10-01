@@ -22,4 +22,9 @@ public class WorkflowRepoServiceImpl implements WorkflowRepoService {
     public WorkflowEntity findWorkflowById(Long id) {
         return this.workflowRepo.findById(id).orElse(null);
     }
+
+    @Override
+    public WorkflowEntity saveWorkFlowEntity(WorkflowEntity workflowEntity){
+        return  workflowRepo.save(workflowEntity);
+    }
 }
