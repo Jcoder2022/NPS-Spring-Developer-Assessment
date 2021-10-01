@@ -1,5 +1,6 @@
 package com.nps.devassessment.general;
 
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.cfg.NotYetImplementedException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,18 +11,22 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
+@Slf4j
 public class GeneralTests {
 
-    private static final Logger log = LoggerFactory.getLogger(GeneralTests.class);
+    //private static final Logger log = LoggerFactory.getLogger(GeneralTests.class);
 
 
     @Test
     public void test1_shouldDemonstrateFilteringInLambdas() {
+
+
+
         // Use the query you created during the Setup tests to select all workflows with a workflow state of "IN PROGRESS"
         // Filter the results by task_status  NULL
         // With the resulting set of workflows, concatenate all of the id values into a comma-separated string and
         //    write that string to the log
-
+log.info("");
         throw new NotYetImplementedException();
     }
 

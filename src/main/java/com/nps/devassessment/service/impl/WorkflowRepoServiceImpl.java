@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -37,4 +38,11 @@ public class WorkflowRepoServiceImpl implements WorkflowRepoService {
         this.workflowRepo.findAllByYjbYpId(YjbYp).forEach(wfp->workflowentitiesByYjbYpId.add(wfp));
         return workflowentitiesByYjbYpId;
     }
+    @Override
+    public List<WorkflowEntity> findAll(){
+
+        return workflowRepo.findAll();
+    }
+
+
 }
