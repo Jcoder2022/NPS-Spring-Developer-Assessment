@@ -1,6 +1,10 @@
 package com.nps.devassessment.service;
 
 import com.nps.devassessment.entity.WorkflowEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.Optional;
+import java.util.Set;
 
 public interface WorkflowRepoService {
 
@@ -9,5 +13,6 @@ public interface WorkflowRepoService {
 
     public WorkflowEntity saveWorkFlowEntity(WorkflowEntity workflowEntity);
 
+    public Set<WorkflowEntity> findWorkflowByYjbYpId(@PathVariable("YjbYpId") Long YjbYpId);
 
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/v1/tests-controller")
@@ -27,4 +28,12 @@ public class TestsController {
         log.info("inside Controller's findWorkflowById method");
         return Optional.ofNullable(workflowRepoService.findWorkflowById(id));
     }
+
+    @GetMapping("/workflow/YjbYp/{YjbYpId}")
+    public Optional<Set<WorkflowEntity>> findWorkflowByYjbYpId(@PathVariable("YjbYpId") Long YjbYpId){
+        log.info("inside Controller's findWorkflowByYjbYpId method");
+        return Optional.ofNullable(workflowRepoService.findWorkflowByYjbYpId(YjbYpId));
+    }
+
+
 }

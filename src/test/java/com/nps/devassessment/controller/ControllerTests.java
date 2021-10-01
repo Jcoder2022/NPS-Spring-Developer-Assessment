@@ -24,7 +24,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.junit.jupiter.api.*;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
@@ -120,6 +122,45 @@ public class ControllerTests {
 
     @Test
     public void test2_shouldTestEndpointToRetrieveWorkflowsByYjbYId() throws Exception {
+
+
+        WorkflowEntity workflowEntity = WorkflowEntity
+                .builder()
+                .id(Long.valueOf(1234))
+                .workflowId(Long.valueOf(123123))
+                .kpfConfirmed(true)
+                .yjbYp(Long.valueOf(11232))
+                .workflowState("IN PROGRESS")
+                .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                .createdBy("katherine.simmons")
+                .modifiedBy("katherine.simmons")
+                .metadata(null)
+                .process("placementProcess")
+                .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
+                .previousState("STARTED")
+                .taskStatus(null)
+                .taskMetadata(null).build();
+
+        Set<WorkflowEntity> s = new HashSet<WorkflowEntity>();
+        s.add(workflowEntity);
+
+        // given
+        given(workflowRepoService.findWorkflowByYjbYpId(Long.valueOf(11232)))
+                .willReturn(s);
+
+        // when
+        MockHttpServletResponse response = mockMvc.perform(
+                        get("/api/v1/tests-controller/workflow/YjbYp/11232")
+                                .accept(MediaType.APPLICATION_JSON))
+                .andReturn().getResponse();
+
+        // then
+        Assertions.assertEquals(HttpStatus.OK.value(),response.getStatus());
+        //Assertions.assertEquals(jsonWorkflowEntity.write(s.).getJson(),response.getContentAsString());
+
+
+
         // Create and test a controller GET endpoint to retrieve a set of entries from the workflow table
         // As a parameter, the Controller should receive a Long value (representing the 'yjb_yp_id' of the workflows)
         // As a response, the Controller should return a JSON entity containing a list of workflows matching the yjb_yp_id

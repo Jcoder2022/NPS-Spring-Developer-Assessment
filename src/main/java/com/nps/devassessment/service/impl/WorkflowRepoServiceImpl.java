@@ -6,6 +6,9 @@ import com.nps.devassessment.service.WorkflowRepoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Service
 public class WorkflowRepoServiceImpl implements WorkflowRepoService {
@@ -26,5 +29,12 @@ public class WorkflowRepoServiceImpl implements WorkflowRepoService {
     @Override
     public WorkflowEntity saveWorkFlowEntity(WorkflowEntity workflowEntity){
         return  workflowRepo.save(workflowEntity);
+    }
+
+    @Override
+    public Set<WorkflowEntity> findWorkflowByYjbYpId(Long YjbYp) {
+        Set<WorkflowEntity> workflowentitiesByYjbYpId = new HashSet<WorkflowEntity>();
+        this.workflowRepo.findAllByYjbYpId(YjbYp).forEach(wfp->workflowentitiesByYjbYpId.add(wfp));
+        return workflowentitiesByYjbYpId;
     }
 }
