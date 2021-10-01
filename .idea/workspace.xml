@@ -6,18 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="428a9916-8827-4b1d-82f3-f291b0aa3f39" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/controller/TestsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/controller/TestsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/repo/WorkflowRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/repo/WorkflowRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/WorkflowRepoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/WorkflowRepoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/impl/WorkflowRepoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/impl/WorkflowRepoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/controller/ControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/controller/ControllerTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/general/GeneralTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/general/GeneralTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/setup/SetupTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/setup/SetupTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nps/devassessment/controller/TestsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nps/devassessment/controller/TestsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nps/devassessment/entity/WorkflowEntity$WorkflowEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nps/devassessment/entity/WorkflowEntity$WorkflowEntityBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nps/devassessment/entity/WorkflowEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nps/devassessment/entity/WorkflowEntity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/nps/devassessment/repo/WorkflowRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nps/devassessment/repo/WorkflowRepo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/nps/devassessment/service/WorkflowRepoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nps/devassessment/service/WorkflowRepoService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/nps/devassessment/service/impl/WorkflowRepoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nps/devassessment/service/impl/WorkflowRepoServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/nps/devassessment/general/GeneralTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/nps/devassessment/general/GeneralTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/nps/devassessment/setup/SetupTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/nps/devassessment/setup/SetupTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +280,14 @@
       <command value="mvn clean" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ControllerTests.test1_shouldTestEndpointToRetrieveWorkflowById">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.ControllerTests.test2_shouldTestEndpointToRetrieveWorkflowsByYjbYId">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -304,6 +310,23 @@
       <option name="PACKAGE_NAME" value="com.nps.devassessment.controller" />
       <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.controller.ControllerTests" />
       <option name="METHOD_NAME" value="test1_shouldTestEndpointToRetrieveWorkflowById" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ControllerTests.test2_shouldTestEndpointToRetrieveWorkflowsByYjbYId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dev-assessment" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nps.devassessment.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nps.devassessment.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.controller.ControllerTests" />
+      <option name="METHOD_NAME" value="test2_shouldTestEndpointToRetrieveWorkflowsByYjbYId" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
@@ -396,9 +419,11 @@
       <item itemvalue="Spring Boot.DevAssessmentApplication (1)" />
       <item itemvalue="Spring Boot.DevAssessmentApplication" />
       <item itemvalue="JUnit.ControllerTests.test1_shouldTestEndpointToRetrieveWorkflowById" />
+      <item itemvalue="JUnit.ControllerTests.test2_shouldTestEndpointToRetrieveWorkflowsByYjbYId" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ControllerTests.test2_shouldTestEndpointToRetrieveWorkflowsByYjbYId" />
         <item itemvalue="JUnit.ControllerTests.test1_shouldTestEndpointToRetrieveWorkflowById" />
         <item itemvalue="Database Script.data.sql" />
         <item itemvalue="JUnit.com.nps.devassessment in NPS Dev Assessment" />
@@ -422,7 +447,7 @@
       <workItem from="1620719217152" duration="22469000" />
       <workItem from="1620994615283" duration="2590000" />
       <workItem from="1621243965267" duration="6736000" />
-      <workItem from="1633100032219" duration="25025000" />
+      <workItem from="1633100032219" duration="26492000" />
     </task>
     <servers />
   </component>

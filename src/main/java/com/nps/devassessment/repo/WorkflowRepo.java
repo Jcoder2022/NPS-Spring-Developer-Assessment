@@ -11,13 +11,14 @@ import java.util.List;
 public interface WorkflowRepo extends PagingAndSortingRepository<WorkflowEntity, Long> {
 
 
-    Iterable<WorkflowEntity> findAllByYjbYpId(Long YjbYpId);
+    Iterable<WorkflowEntity> findAllByYjbYp(Long YjbYpId);
 
 
     List<WorkflowEntity> findAll();
 
     //Select workflows by workflow_state = a given status  (e.g. “IN PROGRESS”, “CANCELLED”, “ADMITTED”)
     //List<WorkflowEntity> findAllByWorkflowState
+
 
 
 

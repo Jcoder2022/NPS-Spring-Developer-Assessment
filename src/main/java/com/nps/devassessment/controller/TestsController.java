@@ -32,7 +32,7 @@ public class TestsController {
     @GetMapping("/workflow/YjbYp/{YjbYpId}")
     public Optional<Set<WorkflowEntity>> findWorkflowByYjbYpId(@PathVariable("YjbYpId") Long YjbYpId){
         log.info("inside Controller's findWorkflowByYjbYpId method");
-        return Optional.ofNullable(workflowRepoService.findWorkflowByYjbYpId(YjbYpId));
+        return Optional.ofNullable(workflowRepoService.findWorkflowByYjbYp(YjbYpId));
     }
 
     @PutMapping("/updateWorkflow")
@@ -41,6 +41,7 @@ public class TestsController {
         log.info("inside Controller's updateWorkflowEntity method");
         return workflowRepoService.saveWorkFlowEntity(workflowEntity);
     }
+
 
 
 }

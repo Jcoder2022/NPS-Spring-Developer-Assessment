@@ -145,7 +145,7 @@ public class ControllerTests {
         s.add(workflowEntity);
 
         // given
-        given(workflowRepoService.findWorkflowByYjbYpId(Long.valueOf(11232)))
+        given(workflowRepoService.findWorkflowByYjbYp(Long.valueOf(11232)))
                 .willReturn(s);
 
         // when

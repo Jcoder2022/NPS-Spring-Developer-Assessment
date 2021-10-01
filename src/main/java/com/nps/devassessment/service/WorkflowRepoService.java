@@ -14,7 +14,7 @@ public interface WorkflowRepoService {
 
     public WorkflowEntity saveWorkFlowEntity(WorkflowEntity workflowEntity);
 
-    public Set<WorkflowEntity> findWorkflowByYjbYpId(@PathVariable("YjbYpId") Long YjbYpId);
+    public Set<WorkflowEntity> findWorkflowByYjbYp(Long YjbYpId);
 
     public List<WorkflowEntity> findAll();
 }
