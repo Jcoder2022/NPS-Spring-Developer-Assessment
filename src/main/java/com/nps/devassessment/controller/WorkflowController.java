@@ -26,18 +26,10 @@ public class WorkflowController {
     @PostMapping("/createWorkflow")
     public ResponseEntity<WorkflowEntity> createWorkFlow(@RequestBody WorkflowEntity workflowEntity) {
         log.info("Inside Controller's createWorkflow method!");
-        return new ResponseEntity<>(workflowRepoService.saveWorkFlowEntity(workflowEntity),HttpStatus.CREATED);
-    }
-
-    @ExceptionHandler(NpsException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<Object> handleItemNotFoundException(
-            NpsException exception
-    ){
-        log.error("Failed to find the requested element", exception);
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(exception.getMessage());
+        workflowEntity = workflowRepoService.saveWorkFlowEntity(workflowEntity);
+        log.info("Inside createWorkflow method! workflow id {} ",workflowEntity.getId());
+        ResponseEntity<WorkflowEntity> responseEntity = new ResponseEntity<>(workflowEntity,HttpStatus.CREATED);
+        return responseEntity;
     }
 
 

@@ -14,6 +14,7 @@ import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -28,6 +29,7 @@ import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -182,7 +184,7 @@ public class WorkflowControllerTests {
         // given
         WorkflowEntity workflowEntity = WorkflowEntity
                 .builder()
-                .id(Long.valueOf(1234))
+                .id(1234L)
                 .workflowId(Long.valueOf(123123))
                 .kpfConfirmed(true)
                 .yjbYp(Long.valueOf(11232))
@@ -198,16 +200,29 @@ public class WorkflowControllerTests {
                 .taskStatus(null)
                 .taskMetadata(null).build();
 
-
-
-
-        given(workflowRepoService.saveWorkFlowEntity(workflowEntity))
+        given(workflowRepoService.saveWorkFlowEntity(WorkflowEntity
+                .builder()
+                .id(null)
+                .workflowId(Long.valueOf(123123))
+                .kpfConfirmed(true)
+                .yjbYp(Long.valueOf(11232))
+                .workflowState("IN PROGRESS")
+                .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                .createdBy("katherine.simmons")
+                .modifiedBy("katherine.simmons")
+                .metadata(null)
+                .process("placementProcess")
+                .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
+                .previousState("STARTED")
+                .taskStatus(null)
+                .taskMetadata(null).build()))
                 .willReturn(workflowEntity);
 
 
         String json = mapper.writeValueAsString(WorkflowEntity
                 .builder()
-                //.id(null)
+                .id(null)
                 .workflowId(Long.valueOf(123123))
                 .kpfConfirmed(true)
                 .yjbYp(Long.valueOf(11232))
@@ -224,20 +239,19 @@ public class WorkflowControllerTests {
                 .taskMetadata(null).build());
 
         //when
-        MvcResult response = mockMvc
+        MockHttpServletResponse response =  mockMvc
                 .perform(
                         post("/api/v1/tests-controller/createWorkflow")
                                 .contentType(MediaType.APPLICATION_JSON)
-                                .content(json).accept(MediaType.APPLICATION_JSON)).andReturn();
+                                .content(json).accept(MediaType.APPLICATION_JSON)).andReturn().getResponse();
 
         // then
 
+        String content = response.getContentAsString();
+        WorkflowEntity wfe = jsonWorkflowEntity.parseObject(content);
+        Assertions.assertNotNull(wfe.getId());
+        Assertions.assertEquals(HttpStatus.CREATED.value(),response.getStatus());
 
-        //String content = response.getResponse().getContentAsString();
-        //System.out.println("content = "+content);
-//        WorkflowEntity addedWorkflowEntity = jsonWorkflowEntity.parseObject(content);
-        Assertions.assertEquals(HttpStatus.CREATED.value(),response.getResponse().getStatus());
-//        Assertions.assertNotNull(addedWorkflowEntity.getId());
 
 
 
@@ -273,10 +287,6 @@ public class WorkflowControllerTests {
 
     @Test
     public void test4_shouldTestEndpointToUpdateExistingWorkflow() throws Exception {
-
-
-
-
 
         WorkflowEntity existedWorkflowEntity = WorkflowEntity
                 .builder()
