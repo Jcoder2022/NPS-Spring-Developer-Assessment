@@ -1,11 +1,15 @@
 package com.nps.devassessment.service.impl;
 
 import com.nps.devassessment.entity.WorkflowEntity;
+import com.nps.devassessment.model.Placement;
+import com.nps.devassessment.model.ResponseTemplateVO;
 import com.nps.devassessment.repo.WorkflowRepo;
 import com.nps.devassessment.service.WorkflowRepoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.HashSet;
 import java.util.List;
@@ -16,6 +20,9 @@ import java.util.Set;
 public class WorkflowRepoServiceImpl implements WorkflowRepoService {
 
     private WorkflowRepo workflowRepo;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Autowired
     WorkflowRepoServiceImpl(WorkflowRepo workflowRepo) {
@@ -44,6 +51,15 @@ public class WorkflowRepoServiceImpl implements WorkflowRepoService {
     public List<WorkflowEntity> findAll(){
 
         return workflowRepo.findAll();
+    }
+
+    @Value("${placement.endpoint.get}")
+    private String placementPath;
+
+    @Override
+    public Placement getWorkflowWithPlacement(Long placementId, Long YjbYpId) {
+        Placement placement = restTemplate.getForObject(placementPath,Placement.class);
+        return placement;
     }
 
 

@@ -25,6 +25,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 
@@ -168,7 +169,7 @@ public class WorkflowControllerTests {
 
     @Test
     public void test3_shouldTestEndpointToCreateANewWorkflow() throws Exception {
-
+        // given
         WorkflowEntity workflowEntity = WorkflowEntity
                 .builder()
                 .id(Long.valueOf(1234))
@@ -189,13 +190,13 @@ public class WorkflowControllerTests {
 
 
 
-        // given
-        given(workflowRepoService.saveWorkFlowEntity(workflowEntity))
-                .willReturn(workflowEntity);
+
+        when(workflowRepoService.saveWorkFlowEntity(workflowEntity))
+                .thenReturn(workflowEntity);
 
 
 
-        // when
+        //when
         MvcResult response = mockMvc
                 .perform(
                         post("/api/v1/tests-controller/createWorkflow")

@@ -1,6 +1,15 @@
 package com.nps.devassessment.model;
 
-public class placement {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Placement implements Serializable {
 
     private Integer id;
 
