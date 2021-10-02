@@ -24,9 +24,9 @@ public class WorkflowController {
     private WorkflowRepoService workflowRepoService;
 
     @PostMapping("/createWorkflow")
-    public WorkflowEntity createWorkFlow(@RequestBody WorkflowEntity workflowEntity) {
+    public ResponseEntity<WorkflowEntity> createWorkFlow(@RequestBody WorkflowEntity workflowEntity) {
         log.info("Inside Controller's createWorkflow method!");
-        return  workflowRepoService.saveWorkFlowEntity(workflowEntity);
+        return new ResponseEntity<>(workflowRepoService.saveWorkFlowEntity(workflowEntity),HttpStatus.CREATED);
     }
 
     @ExceptionHandler(NpsException.class)

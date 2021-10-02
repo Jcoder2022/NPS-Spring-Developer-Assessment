@@ -3,10 +3,11 @@ package com.nps.devassessment.setup;
 import com.nps.devassessment.entity.WorkflowEntity;
 import com.nps.devassessment.service.WorkflowRepoService;
 import org.hibernate.cfg.NotYetImplementedException;
-import org.junit.Assert;
-import org.junit.Test;
+//import org.junit.Assert;
+//import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.runner.RunWith;
+//import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 public class SetupTests {
 
     private static final Logger log = LoggerFactory.getLogger(SetupTests.class);
@@ -38,8 +39,8 @@ public class SetupTests {
         WorkflowEntity workflowEntity = this.workflowRepoService.findWorkflowById(66176L);
 
         // Assert
-        Assert.assertNotNull(workflowEntity);
-        Assert.assertEquals("IN PROGRESS", workflowEntity.getWorkflowState());
+        Assertions.assertNotNull(workflowEntity);
+        Assertions.assertEquals("IN PROGRESS", workflowEntity.getWorkflowState());
 
         // end test
         log.info("Workflow {} found.  yjb_yp_id = {}, workflow_state = {}", workflowEntity.getId(), workflowEntity.getYjbYp(), workflowEntity.getWorkflowState());

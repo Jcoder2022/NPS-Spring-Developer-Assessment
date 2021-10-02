@@ -49,6 +49,10 @@ public class WorkflowControllerTests {
     @MockBean
     private WorkflowRepoService workflowRepoService;
 
+
+    ObjectMapper mapper = new ObjectMapper();
+
+
     // This object will be magically initialized by the initFields method below.
     private JacksonTester<WorkflowEntity> jsonWorkflowEntity;
 
@@ -197,68 +201,42 @@ public class WorkflowControllerTests {
 
 
 
-        when(workflowRepoService.saveWorkFlowEntity(workflowEntity))
-                .thenReturn(workflowEntity);
+        given(workflowRepoService.saveWorkFlowEntity(workflowEntity))
+                .willReturn(workflowEntity);
 
 
+        String json = mapper.writeValueAsString(WorkflowEntity
+                .builder()
+                //.id(null)
+                .workflowId(Long.valueOf(123123))
+                .kpfConfirmed(true)
+                .yjbYp(Long.valueOf(11232))
+                .workflowState("IN PROGRESS")
+                .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                .createdBy("katherine.simmons")
+                .modifiedBy("katherine.simmons")
+                .metadata(null)
+                .process("placementProcess")
+                .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
+                .previousState("STARTED")
+                .taskStatus(null)
+                .taskMetadata(null).build());
 
         //when
-//        MvcResult response = mockMvc
-//                .perform(
-//                        post("/api/v1/tests-controller/createWorkflow")
-//                                .contentType(MediaType.APPLICATION_JSON)
-//                                .content(
-//                                        jsonWorkflowEntity.write(WorkflowEntity
-//                                                .builder()
-//                                                //.id(null)
-//                                                .workflowId(Long.valueOf(123123))
-//                                                .kpfConfirmed(true)
-//                                                .yjbYp(Long.valueOf(11232))
-//                                                .workflowState("IN PROGRESS")
-//                                                .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
-//                                                .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
-//                                                .createdBy("katherine.simmons")
-//                                                .modifiedBy("katherine.simmons")
-//                                                .metadata(null)
-//                                                .process("placementProcess")
-//                                                .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
-//                                                .previousState("STARTED")
-//                                                .taskStatus(null)
-//                                                .taskMetadata(null).build()).getJson()
-//                                ).accept(MediaType.APPLICATION_JSON)).andReturn();
+        MvcResult response = mockMvc
+                .perform(
+                        post("/api/v1/tests-controller/createWorkflow")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(json).accept(MediaType.APPLICATION_JSON)).andReturn();
 
         // then
 
 
-
-        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.post("/api/v1/tests-controller/createWorkflow")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .content(jsonWorkflowEntity.write(WorkflowEntity
-                        .builder()
-                        //.id(null)
-                        .workflowId(Long.valueOf(123123))
-                        .kpfConfirmed(true)
-                        .yjbYp(Long.valueOf(11232))
-                        .workflowState("IN PROGRESS")
-                        .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
-                        .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
-                        .createdBy("katherine.simmons")
-                        .modifiedBy("katherine.simmons")
-                        .metadata(null)
-                        .process("placementProcess")
-                        .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
-                        .previousState("STARTED")
-                        .taskStatus(null)
-                        .taskMetadata(null).build()).getJson());
-
-        MvcResult result = mockMvc.perform(mockRequest).andReturn();
-
-
-        String content = result.getResponse().getContentAsString();
-        System.out.println("content = "+content);
+        //String content = response.getResponse().getContentAsString();
+        //System.out.println("content = "+content);
 //        WorkflowEntity addedWorkflowEntity = jsonWorkflowEntity.parseObject(content);
-//        Assertions.assertEquals(HttpStatus.OK.value(),response.getResponse().getStatus());
+        Assertions.assertEquals(HttpStatus.CREATED.value(),response.getResponse().getStatus());
 //        Assertions.assertNotNull(addedWorkflowEntity.getId());
 
 
