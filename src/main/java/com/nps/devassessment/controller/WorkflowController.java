@@ -2,7 +2,6 @@ package com.nps.devassessment.controller;
 
 import com.nps.devassessment.entity.WorkflowEntity;
 import com.nps.devassessment.model.Placement;
-import com.nps.devassessment.model.ResponseTemplateVO;
 import com.nps.devassessment.service.WorkflowRepoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

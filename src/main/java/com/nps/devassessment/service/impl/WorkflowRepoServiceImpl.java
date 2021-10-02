@@ -2,7 +2,6 @@ package com.nps.devassessment.service.impl;
 
 import com.nps.devassessment.entity.WorkflowEntity;
 import com.nps.devassessment.model.Placement;
-import com.nps.devassessment.model.ResponseTemplateVO;
 import com.nps.devassessment.repo.WorkflowRepo;
 import com.nps.devassessment.service.WorkflowRepoService;
 import org.springframework.beans.factory.annotation.Autowired;

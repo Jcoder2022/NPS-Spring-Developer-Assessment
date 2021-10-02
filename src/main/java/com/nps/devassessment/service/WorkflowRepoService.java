@@ -2,11 +2,8 @@ package com.nps.devassessment.service;
 
 import com.nps.devassessment.entity.WorkflowEntity;
 import com.nps.devassessment.model.Placement;
-import com.nps.devassessment.model.ResponseTemplateVO;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 public interface WorkflowRepoService {
