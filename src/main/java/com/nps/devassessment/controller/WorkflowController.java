@@ -61,11 +61,11 @@ public class WorkflowController {
         log.info("inside Controller's updateWorkflowEntity method");
 
         if (workflowEntity == null || workflowEntity.getId() == null) {
-            throw new NpsException("PatientRecord or ID must not be null!");
+            throw new NpsException("WorkflowEntity or ID must not be null!");
         }
         Optional<WorkflowEntity> optionalRecord = Optional.ofNullable(workflowRepoService.findWorkflowById(workflowEntity.getId()));
         if (optionalRecord.isEmpty()) {
-            throw new NotFoundException("Patient with ID " + optionalRecord.get().getId() + " does not exist.");
+            throw new NotFoundException("WorkflowEntity with ID " + optionalRecord.get().getId() + " does not exist.");
         }
 
         WorkflowEntity existedWFE = optionalRecord.get();
