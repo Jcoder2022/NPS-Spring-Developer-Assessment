@@ -216,7 +216,8 @@ public class WorkflowControllerTests {
                 .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
                 .previousState("STARTED")
                 .taskStatus(null)
-                .taskMetadata(null).build()))
+                .taskMetadata(null)
+                .build()))
                 .willReturn(workflowEntity);
 
 
@@ -290,10 +291,10 @@ public class WorkflowControllerTests {
 
         WorkflowEntity existedWorkflowEntity = WorkflowEntity
                 .builder()
-                .id(Long.valueOf(1234))
-                .workflowId(Long.valueOf(123123))
+                .id(1234L)
+                .workflowId(123123L)
                 .kpfConfirmed(true)
-                .yjbYp(Long.valueOf(11232))
+                .yjbYp(11232L)
                 .workflowState("IN PROGRESS")
                 .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
                 .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
@@ -311,16 +312,26 @@ public class WorkflowControllerTests {
                 .willReturn(existedWorkflowEntity);
 
 
+        WorkflowEntity updatedWFE = WorkflowEntity
+                .builder()
+                .id(1234L)
+                .workflowId(Long.valueOf(123123))
+                .kpfConfirmed(true)
+                .yjbYp(Long.valueOf(11232))
+                .workflowState("TASK COMPLETED")
+                .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                .createdBy("rabia.rabia")
+                .modifiedBy("rabia.rabia")
+                .metadata(null)
+                .process("placementProcess")
+                .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
+                .previousState("STARTED")
+                .taskStatus(null)
+                .taskMetadata(null).build();
 
-        // when
-        MockHttpServletResponse responseForExistedWF = mockMvc.perform(
-                        get("/api/v1/tests-controller/workflow/1234")
-                                .accept(MediaType.APPLICATION_JSON))
-                .andReturn().getResponse();
+        given(workflowRepoService.saveWorkFlowEntity(updatedWFE)).willReturn(updatedWFE);
 
-        String content = responseForExistedWF.getContentAsString();
-
-        existedWorkflowEntity = jsonWorkflowEntity.parseObject(content);
 
         // when
         MockHttpServletResponse response = mockMvc
@@ -328,32 +339,17 @@ public class WorkflowControllerTests {
                         put("/api/v1/tests-controller/updateWorkflow")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(
-                                        jsonWorkflowEntity.write( WorkflowEntity
-                                                .builder()
-                                                .id(Long.valueOf(1234))
-                                                .workflowId(Long.valueOf(123123))
-                                                .kpfConfirmed(true)
-                                                .yjbYp(Long.valueOf(11232))
-                                                .workflowState("TASK COMPLETED")
-                                                .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
-                                                .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
-                                                .createdBy("rabia.rabia")
-                                                .modifiedBy("rabia.rabia")
-                                                .metadata(null)
-                                                .process("placementProcess")
-                                                .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
-                                                .previousState("STARTED")
-                                                .taskStatus(null)
-                                                .taskMetadata(null).build()).getJson()
+                                        jsonWorkflowEntity.write(updatedWFE).getJson()
                                 )).andReturn().getResponse();
-        content = response.getContentAsString();
+
+        String content = response.getContentAsString();
 
         WorkflowEntity updatedWorkflowEntity = jsonWorkflowEntity.parseObject(content);
 
         // then
         Assertions.assertEquals(HttpStatus.CREATED.value(),response.getStatus());
         Assertions.assertEquals(true,updatedWorkflowEntity instanceof WorkflowEntity );
-        Assertions.assertNotEquals(updatedWorkflowEntity.getWorkflowState(),existedWorkflowEntity.getWorkflowState());
+        Assertions.assertEquals(updatedWFE.getWorkflowState(),updatedWorkflowEntity.getWorkflowState());
 
 
 

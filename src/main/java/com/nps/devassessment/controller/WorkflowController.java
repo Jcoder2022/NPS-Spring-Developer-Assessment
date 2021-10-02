@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
+import java.sql.Timestamp;
 import java.util.Optional;
 import java.util.Set;
 
@@ -49,7 +50,7 @@ public class WorkflowController {
 
     @PutMapping("/updateWorkflow")
     @ResponseBody
-    public WorkflowEntity updateWorkflowEntity(@RequestBody WorkflowEntity workflowEntity) throws NpsException, NotFoundException {
+    public ResponseEntity<WorkflowEntity> updateWorkflowEntity(@RequestBody WorkflowEntity workflowEntity) throws NpsException, NotFoundException {
         log.info("inside Controller's updateWorkflowEntity method");
 
         if (workflowEntity == null || workflowEntity.getId() == null) {
@@ -64,8 +65,21 @@ public class WorkflowController {
 
         existedWFE.setMetadata(workflowEntity.getMetadata());
         existedWFE.setCreated(workflowEntity.getCreated());
+        existedWFE.setTaskStatus(workflowEntity.getTaskStatus());
+        existedWFE.setCreatedBy(workflowEntity.getCreatedBy());
+        existedWFE.setKpfConfirmed(workflowEntity.getKpfConfirmed());
+        existedWFE.setWorkflowState(workflowEntity.getWorkflowState());
+        existedWFE.setYjbYp(workflowEntity.getYjbYp());
+        existedWFE.setModified(workflowEntity.getModified());
+        existedWFE.setModifiedBy(workflowEntity.getModifiedBy());
+        existedWFE.setProcess(workflowEntity.getProcess());
+        existedWFE.setTaskId(workflowEntity.getTaskId());
+        existedWFE.setPreviousState(workflowEntity.getPreviousState());
+        existedWFE.setTaskMetadata(workflowEntity.getTaskMetadata());
 
-        return workflowRepoService.saveWorkFlowEntity(workflowEntity);
+
+        ResponseEntity<WorkflowEntity> responseEntity = new ResponseEntity<>(workflowRepoService.saveWorkFlowEntity(existedWFE),HttpStatus.CREATED);
+        return responseEntity;
     }
 
     //"/api/v1/placements/getplacement/{id}/ypid/{yjb_yp_id}"
