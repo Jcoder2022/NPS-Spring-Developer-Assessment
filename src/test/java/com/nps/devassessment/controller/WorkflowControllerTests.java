@@ -6,44 +6,38 @@ import com.nps.devassessment.service.WorkflowRepoService;
 import org.hibernate.cfg.NotYetImplementedException;
 //import org.junit.Before;
 //import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.MockitoAnnotations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.client.match.ContentRequestMatchers;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.junit.jupiter.api.*;
 
 import java.sql.Timestamp;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
-public class ControllerTests {
+public class WorkflowControllerTests {
 
-    private static final Logger log = LoggerFactory.getLogger(ControllerTests.class);
+    private static final Logger log = LoggerFactory.getLogger(WorkflowControllerTests.class);
 
     MockMvc mockMvc;
 
 
-    @InjectMocks
-    private TestsController testsController;
+    @Autowired
+    private WorkflowController workflowController;
 
     @MockBean
     private WorkflowRepoService workflowRepoService;
@@ -63,7 +57,7 @@ public class ControllerTests {
         JacksonTester.initFields(this, new ObjectMapper());
 
         mockMvc = MockMvcBuilders.
-                standaloneSetup(testsController).
+                standaloneSetup(workflowController).
                 build();
     }
 
@@ -175,15 +169,41 @@ public class ControllerTests {
     @Test
     public void test3_shouldTestEndpointToCreateANewWorkflow() throws Exception {
 
+        WorkflowEntity workflowEntity = WorkflowEntity
+                .builder()
+                .id(Long.valueOf(1234))
+                .workflowId(Long.valueOf(123123))
+                .kpfConfirmed(true)
+                .yjbYp(Long.valueOf(11232))
+                .workflowState("IN PROGRESS")
+                .created(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                .modified(Timestamp.valueOf("2021-01-07 09:53:55.261"))
+                .createdBy("katherine.simmons")
+                .modifiedBy("katherine.simmons")
+                .metadata(null)
+                .process("placementProcess")
+                .taskId("5f1b3c77-f5fb-4a78-9d16-d4ffd5b4facc")
+                .previousState("STARTED")
+                .taskStatus(null)
+                .taskMetadata(null).build();
+
+
+
+        // given
+        given(workflowRepoService.saveWorkFlowEntity(workflowEntity))
+                .willReturn(workflowEntity);
+
+
+
         // when
-        MockHttpServletResponse response = mockMvc
+        MvcResult response = mockMvc
                 .perform(
                         post("/api/v1/tests-controller/createWorkflow")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(
-                                        jsonWorkflowEntity.write( WorkflowEntity
+                                        jsonWorkflowEntity.write(WorkflowEntity
                                                 .builder()
-                                                //.id(Long.valueOf(123123))
+                                                //.id(null)
                                                 .workflowId(Long.valueOf(123123))
                                                 .kpfConfirmed(true)
                                                 .yjbYp(Long.valueOf(11232))
@@ -198,11 +218,16 @@ public class ControllerTests {
                                                 .previousState("STARTED")
                                                 .taskStatus(null)
                                                 .taskMetadata(null).build()).getJson()
-                                )).andReturn().getResponse();
+                                ).accept(MediaType.APPLICATION_JSON)).andReturn();
 
         // then
-        Assertions.assertEquals(HttpStatus.CREATED.value(),response.getStatus());
-        //Assertions.assertEquals(HttpStatus.CREATED.value(),);
+
+        String content = response.getResponse().getContentAsString();
+        System.out.println("content = "+content);
+        WorkflowEntity addedWorkflowEntity = jsonWorkflowEntity.parseObject(content);
+        Assertions.assertEquals(HttpStatus.OK.value(),response.getResponse().getStatus());
+        Assertions.assertNotNull(addedWorkflowEntity.getId());
+
 
 
         // Create and test a controller POST endpoint to create a new entry within the workflow table

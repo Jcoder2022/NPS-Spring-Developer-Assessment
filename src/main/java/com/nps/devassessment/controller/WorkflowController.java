@@ -12,7 +12,7 @@ import java.util.Set;
 @RestController
 @RequestMapping("/api/v1/tests-controller")
 @Slf4j
-public class TestsController {
+public class WorkflowController {
 
     @Autowired
     private WorkflowRepoService workflowRepoService;

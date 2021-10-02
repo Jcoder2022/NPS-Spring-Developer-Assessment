@@ -7,16 +7,8 @@
     <list default="true" id="428a9916-8827-4b1d-82f3-f291b0aa3f39" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/controller/TestsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/controller/TestsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/repo/WorkflowRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/repo/WorkflowRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/WorkflowRepoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/WorkflowRepoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/impl/WorkflowRepoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/impl/WorkflowRepoServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/controller/ControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/controller/ControllerTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nps/devassessment/repo/WorkflowRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nps/devassessment/repo/WorkflowRepo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nps/devassessment/service/WorkflowRepoService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nps/devassessment/service/WorkflowRepoService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nps/devassessment/service/impl/WorkflowRepoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nps/devassessment/service/impl/WorkflowRepoServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/nps/devassessment/general/GeneralTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/nps/devassessment/general/GeneralTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/nps/devassessment/setup/SetupTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/nps/devassessment/setup/SetupTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/nps/devassessment/controller/ControllerTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/nps/devassessment/controller/ControllerTests.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,7 +279,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ControllerTests.test2_shouldTestEndpointToRetrieveWorkflowsByYjbYId">
+  <component name="RunManager" selected="JUnit.WorkflowControllerTests.test3_shouldTestEndpointToCreateANewWorkflow">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -299,7 +291,7 @@
       <script-mode>FILE</script-mode>
       <method v="2" />
     </configuration>
-    <configuration name="ControllerTests.test1_shouldTestEndpointToRetrieveWorkflowById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WorkflowControllerTests.test1_shouldTestEndpointToRetrieveWorkflowById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dev-assessment" />
       <extension name="coverage">
         <pattern>
@@ -308,7 +300,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.nps.devassessment.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.controller.ControllerTests" />
+      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.controller.WorkflowControllerTests" />
       <option name="METHOD_NAME" value="test1_shouldTestEndpointToRetrieveWorkflowById" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -316,7 +308,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ControllerTests.test2_shouldTestEndpointToRetrieveWorkflowsByYjbYId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WorkflowControllerTests.test2_shouldTestEndpointToRetrieveWorkflowsByYjbYId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dev-assessment" />
       <extension name="coverage">
         <pattern>
@@ -325,7 +317,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.nps.devassessment.controller" />
-      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.controller.ControllerTests" />
+      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.controller.WorkflowControllerTests" />
       <option name="METHOD_NAME" value="test2_shouldTestEndpointToRetrieveWorkflowsByYjbYId" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -333,17 +325,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SetupTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="NPS Dev Assessment" />
+    <configuration name="WorkflowControllerTests.test3_shouldTestEndpointToCreateANewWorkflow" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dev-assessment" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.nps.devassessment.setup.*" />
+          <option name="PATTERN" value="com.nps.devassessment.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.nps.devassessment.setup" />
-      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.setup.SetupTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.nps.devassessment.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.controller.WorkflowControllerTests" />
+      <option name="METHOD_NAME" value="test3_shouldTestEndpointToCreateANewWorkflow" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -415,19 +408,19 @@
     <list>
       <item itemvalue="Database Script.data.sql" />
       <item itemvalue="JUnit.com.nps.devassessment in NPS Dev Assessment" />
-      <item itemvalue="JUnit.SetupTests" />
       <item itemvalue="Spring Boot.DevAssessmentApplication (1)" />
       <item itemvalue="Spring Boot.DevAssessmentApplication" />
-      <item itemvalue="JUnit.ControllerTests.test1_shouldTestEndpointToRetrieveWorkflowById" />
-      <item itemvalue="JUnit.ControllerTests.test2_shouldTestEndpointToRetrieveWorkflowsByYjbYId" />
+      <item itemvalue="JUnit.WorkflowControllerTests.test1_shouldTestEndpointToRetrieveWorkflowById" />
+      <item itemvalue="JUnit.WorkflowControllerTests.test2_shouldTestEndpointToRetrieveWorkflowsByYjbYId" />
+      <item itemvalue="JUnit.WorkflowControllerTests.test3_shouldTestEndpointToCreateANewWorkflow" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ControllerTests.test2_shouldTestEndpointToRetrieveWorkflowsByYjbYId" />
-        <item itemvalue="JUnit.ControllerTests.test1_shouldTestEndpointToRetrieveWorkflowById" />
+        <item itemvalue="JUnit.WorkflowControllerTests.test3_shouldTestEndpointToCreateANewWorkflow" />
+        <item itemvalue="JUnit.WorkflowControllerTests.test2_shouldTestEndpointToRetrieveWorkflowsByYjbYId" />
+        <item itemvalue="JUnit.WorkflowControllerTests.test1_shouldTestEndpointToRetrieveWorkflowById" />
         <item itemvalue="Database Script.data.sql" />
         <item itemvalue="JUnit.com.nps.devassessment in NPS Dev Assessment" />
-        <item itemvalue="JUnit.SetupTests" />
       </list>
     </recent_temporary>
   </component>
@@ -448,6 +441,7 @@
       <workItem from="1620994615283" duration="2590000" />
       <workItem from="1621243965267" duration="6736000" />
       <workItem from="1633100032219" duration="26492000" />
+      <workItem from="1633181342805" duration="2803000" />
     </task>
     <servers />
   </component>
@@ -568,6 +562,11 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/nps/devassessment/setup/SetupTests.java</url>
           <line>36</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/nps/devassessment/controller/ControllerTests.java</url>
+          <line>231</line>
+          <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
