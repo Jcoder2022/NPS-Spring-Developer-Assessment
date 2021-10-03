@@ -1,9 +1,6 @@
 package com.nps.devassessment.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,6 +14,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
+@EqualsAndHashCode
 public class WorkflowEntity implements Serializable {
 
     @Id
@@ -59,7 +57,7 @@ public class WorkflowEntity implements Serializable {
     @Column(name = "previous_state")
     private String previousState;
 
-    @Column(name = "task_status")
+    @Column(name = "task_status",nullable = true)
     private String taskStatus;
 
     @Column(name = "task_metadata")
