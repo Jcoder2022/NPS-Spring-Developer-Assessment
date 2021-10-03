@@ -29,6 +29,7 @@ public class GeneralTests {
 
     @Autowired
     private WorkflowRepoService workflowRepoService;
+    private JacksonTester<WorkflowEntity> jsonWorkflowEntity;
 
 
     @Test
@@ -119,7 +120,7 @@ public class GeneralTests {
 
     }
 
-    private JacksonTester<WorkflowEntity> jsonWorkflowEntity;
+
 
     @BeforeEach
     void init() {
