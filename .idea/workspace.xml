@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="428a9916-8827-4b1d-82f3-f291b0aa3f39" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/entity/WorkflowEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/entity/WorkflowEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/general/GeneralTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/general/GeneralTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nps/devassessment/entity/WorkflowEntity$WorkflowEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nps/devassessment/entity/WorkflowEntity$WorkflowEntityBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/nps/devassessment/entity/WorkflowEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/nps/devassessment/entity/WorkflowEntity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/nps/devassessment/general/GeneralTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/nps/devassessment/general/GeneralTests.class" afterDir="false" />
-    </list>
+    <list default="true" id="428a9916-8827-4b1d-82f3-f291b0aa3f39" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -459,7 +451,7 @@
       <workItem from="1620994615283" duration="2590000" />
       <workItem from="1621243965267" duration="6736000" />
       <workItem from="1633100032219" duration="26492000" />
-      <workItem from="1633181342805" duration="31503000" />
+      <workItem from="1633181342805" duration="31818000" />
     </task>
     <servers />
   </component>
