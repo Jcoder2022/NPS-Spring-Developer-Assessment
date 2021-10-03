@@ -49,6 +49,88 @@ public class SetupTests {
 
 
 
+   /*
+   Select workflows by workflow_state = a given value  (e.g. “IN PROGRESS”, “CANCELLED”, “ADMITTED”)
+    Select workflows by a given list of yjb_yp_id values  (e.g. 30848, 32524, 28117)
+    Select workflows by 'created' column is after a given date (e.g. 01/02/2021)
+    Select workflows by 'modified' column is after a given date (e.g. 01/01/20) but before another given date (e.g. 01/03/2021)
+    Select workflows by process = a given value (e.g. “placementProcess”) and task_status != a given value
+            (e.g.  “ADMITTED”)
+    Select id, yjb_yp_id and task_status columns for all workflows where created_by = a given value (e.g. “lee.everitt”)
+    Select the first 10 rows where process = a given value (e.g. “transferPlanned”).  Order the results by id in descending order
+
+*/
+
+    @Test
+    public void test1_shouldReturnWorkflowCriteriaOnWorkflowStateAsMentioned(){
+        StringBuilder builder = new StringBuilder();
+        String query = builder.append("SELECT * FROM WORKFLOW WHERE WORKFLOW_STATE='IN PROGRESS' OR WORKFLOW_STATE='CANCELLED' OR WORKFLOW_STATE='ADMITTED'").toString();
+
+
+    }
+
+    @Test
+    public void test1_shouldReturnWorkflowCriteriaOnYJB_YP_IDAsMentioned(){
+        StringBuilder builder = new StringBuilder();
+        String query =builder.append("SELECT * FROM WORKFLOW WHERE YJB_YP_ID IN (30848, 32524, 28117)").toString();
+
+
+
+    }
+
+    @Test
+    public void test1_shouldReturnWorkflowCriteriaOnCreatedDateAsMentioned(){
+        StringBuilder builder = new StringBuilder();
+        String query = builder.append("SELECT * FROM WORKFLOW WHERE CREATED > '2021-02-01'").toString();
+
+
+
+
+    }
+
+    @Test
+    public void test1_shouldReturnWorkflowCriteriaOnModifiedDateAsMentioned(){
+        StringBuilder builder = new StringBuilder();
+        String query = builder.append("SELECT * FROM WORKFLOW WHERE MODIFIED > '2020-01-01' and MODIFIED < '2021-03-01'").toString();
+
+
+
+
+    }
+
+
+    @Test
+    public void test1_shouldReturnWorkflowCriteriaOnProcessAsMentioned(){
+        StringBuilder builder = new StringBuilder();
+        String query = builder.append("SELECT * FROM WORKFLOW WHERE PROCESS='placementProcess' and TASK_STATUS!='ADMITTED'").toString();
+
+
+
+    }
+
+    @Test
+    public void test1_shouldReturnWorkflowCriteriaOnCreatedByAsMentioned(){
+        StringBuilder builder = new StringBuilder();
+        String query = builder.append("SELECT ID, YJB_YP_ID,TASK_STATUS FROM WORKFLOW WHERE CREATED_BY='lee.everitt'").toString();
+
+
+
+
+    }
+
+    @Test
+    public void test1_shouldReturnWorkflowCriteriaOnProcessAsTransferPlannedAsMentioned(){
+        StringBuilder builder = new StringBuilder();
+        builder.append("SELECT TOP 10 * FROM WORKFLOW WHERE PROCESS='transferPlanned' ORDER BY ID ASC");
+
+
+
+
+    }
+
+
+
+
     @Test
     public void test1_shouldDemonstrateRequestedRepoQueries() {
         // implement queries as per the word document

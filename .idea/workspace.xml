@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="428a9916-8827-4b1d-82f3-f291b0aa3f39" name="Default" comment="" />
+    <list default="true" id="428a9916-8827-4b1d-82f3-f291b0aa3f39" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/setup/SetupTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/setup/SetupTests.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -248,7 +252,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="H2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -259,6 +263,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\JCode\microservices\NPS-Spring-Developer-Assessment" />
       <recent name="C:\Users\JCode\microservices\NPS-Spring-Developer-Assessment\src\test" />
       <recent name="C:\Main\i2N\YJB Futures\Code\MoJ GIT\NPS Dev Assessment\src\main\java\com\nps\devassessment\entity" />
     </key>
@@ -275,7 +280,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GeneralTests.test4_shouldDemonstrateUsingParallelProcesses">
+  <component name="RunManager" selected="Spring Boot.DevAssessmentApplication (1)">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -451,7 +456,7 @@
       <workItem from="1620994615283" duration="2590000" />
       <workItem from="1621243965267" duration="6736000" />
       <workItem from="1633100032219" duration="26492000" />
-      <workItem from="1633181342805" duration="31818000" />
+      <workItem from="1633181342805" duration="35036000" />
     </task>
     <servers />
   </component>
