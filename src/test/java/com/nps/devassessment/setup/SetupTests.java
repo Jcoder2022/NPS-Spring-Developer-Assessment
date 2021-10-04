@@ -76,6 +76,8 @@ public class SetupTests {
 
 
         log.info("Workflow - Criteria On WorkflowState - size of return list is {} ",workflowEntities.size() );
+
+        Assertions.assertNotNull(workflowEntities.size());
     }
 
     @Test
@@ -87,7 +89,7 @@ public class SetupTests {
 
 
         log.info("Workflow - Criteria On YJB_YP_ID - size of return list is {} ",workflowEntities.size() );
-
+        Assertions.assertNotNull(workflowEntities.size());
 
     }
 
@@ -101,6 +103,7 @@ public class SetupTests {
 
         log.info("Workflow - Criteria On Created Date - size of return list is {} ",workflowEntities.size() );
 
+        Assertions.assertNotNull(workflowEntities.size());
 
     }
 
@@ -111,6 +114,8 @@ public class SetupTests {
         List<WorkflowEntity> workflowEntities = processQuery.executeQuery(query);
 
         log.info("Workflow - Criteria On Modified Date - size of return list is {} ",workflowEntities.size() );
+
+        Assertions.assertNotNull(workflowEntities.size());
 
     }
 
@@ -123,6 +128,7 @@ public class SetupTests {
 
         log.info("Workflow - Criteria On Process and TASK_STATUS  - size of return list is {} ",workflowEntities.size() );
 
+        Assertions.assertNotNull(workflowEntities.size());
 
     }
 
@@ -134,6 +140,7 @@ public class SetupTests {
 
         log.info("Workflow - Criteria On CreatedBy  - size of return list is {} ",workflowEntities.size() );
 
+        Assertions.assertNotNull(workflowEntities.size());
 
 
     }
@@ -146,6 +153,7 @@ public class SetupTests {
 
         log.info("Workflow -  Top 10 Criteria On Process As TransferPlanned In ASC order  - size of return list is {} ",workflowEntities.size() );
 
+        Assertions.assertNotNull(workflowEntities.size());
 
 
     }
