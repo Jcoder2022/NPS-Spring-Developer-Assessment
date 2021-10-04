@@ -83,8 +83,8 @@ public class WorkflowController {
     }
 
     //"/api/v1/placements/getplacement/{id}/ypid/{yjb_yp_id}"
-    //@GetMapping("${placement.endpoint.get}")
-    public Placement getWorkflowWithPlacement(@PathVariable("placementId") Long placementId,@PathVariable("YjbYpId") Long YjbYpId){
+    @GetMapping("/api/v1/placements/getplacement/{id}/ypid/{yjb_yp_id}")
+    public Placement getWorkflowWithPlacement(@PathVariable("id") Long placementId,@PathVariable("yjb_yp_id") Long YjbYpId){
         log.info("Inside getWorkflowWithPlacement of WorkflowController");
         Placement placement = workflowRepoService.getWorkflowWithPlacement(placementId,YjbYpId);
 
