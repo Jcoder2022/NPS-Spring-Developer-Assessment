@@ -57,7 +57,7 @@ public class WorkflowRepoServiceImpl implements WorkflowRepoService {
 
     @Override
     public Placement getWorkflowWithPlacement(Long placementId, Long YjbYpId) {
-        Placement placement = restTemplate.getForObject(placementPath,Placement.class);
+        Placement placement = restTemplate.getForObject("/api/v1/placements/getplacement/"+placementId + "/ypid/" +YjbYpId,Placement.class);
         return placement;
     }
 
