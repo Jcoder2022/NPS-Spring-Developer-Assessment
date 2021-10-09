@@ -1,5 +1,6 @@
 package com.nps.devassessment.exception;
 
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,16 +13,12 @@ public class NpsException extends  Exception{
         super(message);
     }
 
-    @ExceptionHandler(NpsException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ResponseEntity<Object> handleItemNotFoundException(
-            NpsException exception
-    ){
-        //log.error("Failed to find the requested element", exception);
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(exception.getMessage());
+    public static  String NotFoundException (Long id){
+        return "Entity with id " + id +" not found." ;
     }
 
+    public static String EntityAlreadyExists(){
+        return "Entity with properties already exists.";
+    }
 
 }

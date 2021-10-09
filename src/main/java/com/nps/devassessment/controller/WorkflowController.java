@@ -4,7 +4,6 @@ import com.nps.devassessment.entity.WorkflowEntity;
 import com.nps.devassessment.exception.NpsException;
 import com.nps.devassessment.model.Placement;
 import com.nps.devassessment.service.WorkflowRepoService;
-import javassist.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,9 +36,17 @@ public class WorkflowController {
 
 
     @GetMapping("/workflow/{id}")
-    public Optional<WorkflowEntity> findWorkflowById(@PathVariable("id") Long id) throws NpsException{
+    public ResponseEntity<WorkflowEntity> findWorkflowById(@PathVariable("id") Long id) throws NpsException{
         log.info("inside Controller's findWorkflowById method");
-        return Optional.ofNullable(workflowRepoService.findWorkflowById(id));
+        WorkflowEntity workflowEntity = null;
+        try{
+            workflowEntity = workflowRepoService.findWorkflowById(id);
+            return new ResponseEntity<WorkflowEntity>(workflowEntity,HttpStatus.FOUND);
+        }
+        catch(NpsException npe) {
+            return new ResponseEntity<WorkflowEntity>(workflowEntity,HttpStatus.NOT_FOUND);
+        }
+
     }
 
     @GetMapping("/workflow/YjbYp/{YjbYpId}")
@@ -50,11 +57,12 @@ public class WorkflowController {
 
     @PutMapping("/updateWorkflow")
     @ResponseBody
-    public ResponseEntity<WorkflowEntity> updateWorkflowEntity(@RequestBody WorkflowEntity workflowEntity) throws NpsException, NotFoundException {
+    public ResponseEntity<WorkflowEntity> updateWorkflowEntity(@RequestBody WorkflowEntity workflowEntity) {
         log.info("inside Controller's updateWorkflowEntity method");
 
         if (workflowEntity == null || workflowEntity.getId() == null) {
-            throw new NpsException("WorkflowEntity or ID must not be null!");
+            Re;
+
         }
         Optional<WorkflowEntity> optionalRecord = Optional.ofNullable(workflowRepoService.findWorkflowById(workflowEntity.getId()));
         if (optionalRecord.isEmpty()) {

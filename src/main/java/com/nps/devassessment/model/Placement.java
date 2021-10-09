@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Placement implements Serializable {
+public class Placement implements Serializable,Cloneable {
 
     private Integer id;
 

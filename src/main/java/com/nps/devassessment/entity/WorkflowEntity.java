@@ -1,6 +1,7 @@
 package com.nps.devassessment.entity;
 
 import lombok.*;
+import org.springframework.context.annotation.Bean;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import java.sql.Timestamp;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
+
 public class WorkflowEntity implements Serializable {
 
     @Id

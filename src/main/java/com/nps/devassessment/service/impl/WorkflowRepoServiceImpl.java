@@ -1,6 +1,7 @@
 package com.nps.devassessment.service.impl;
 
 import com.nps.devassessment.entity.WorkflowEntity;
+import com.nps.devassessment.exception.NpsException;
 import com.nps.devassessment.model.Placement;
 import com.nps.devassessment.repo.WorkflowRepo;
 import com.nps.devassessment.service.WorkflowRepoService;
@@ -12,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 
@@ -30,8 +32,13 @@ public class WorkflowRepoServiceImpl implements WorkflowRepoService {
 
 
     @Override
-    public WorkflowEntity findWorkflowById(Long id) {
-        return this.workflowRepo.findById(id).orElse(null);
+    public WorkflowEntity findWorkflowById(Long id) throws NpsException {
+        Optional<WorkflowEntity> wfe = this.workflowRepo.findById(id);
+        if(wfe.isPresent())
+        {
+            return wfe.get();
+        }
+        else throw new NpsException(NpsException.NotFoundException(id));
     }
 
     @Override
