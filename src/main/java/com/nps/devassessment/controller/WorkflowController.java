@@ -27,30 +27,27 @@ public class WorkflowController {
     public ResponseEntity<WorkflowEntity> createWorkFlow(@RequestBody WorkflowEntity workflowEntity) {
         log.info("Inside Controller's createWorkflow method!");
         workflowEntity = workflowRepoService.saveWorkFlowEntity(workflowEntity);
-        log.info("Inside createWorkflow method! workflow id {} ",workflowEntity.getId());
-        ResponseEntity<WorkflowEntity> responseEntity = new ResponseEntity<>(workflowEntity,HttpStatus.CREATED);
+        log.info("Inside createWorkflow method! workflow id {} ", workflowEntity.getId());
+        ResponseEntity<WorkflowEntity> responseEntity = new ResponseEntity<>(workflowEntity, HttpStatus.CREATED);
         return responseEntity;
     }
 
 
-
-
     @GetMapping("/workflow/{id}")
-    public ResponseEntity<WorkflowEntity> findWorkflowById(@PathVariable("id") Long id) throws NpsException{
+    public ResponseEntity<WorkflowEntity> findWorkflowById(@PathVariable("id") Long id) throws NpsException {
         log.info("inside Controller's findWorkflowById method");
         WorkflowEntity workflowEntity = null;
-        try{
+        try {
             workflowEntity = workflowRepoService.findWorkflowById(id);
-            return new ResponseEntity<WorkflowEntity>(workflowEntity,HttpStatus.FOUND);
-        }
-        catch(NpsException npe) {
-            return new ResponseEntity<WorkflowEntity>(workflowEntity,HttpStatus.NOT_FOUND);
+            return new ResponseEntity<WorkflowEntity>(workflowEntity, HttpStatus.FOUND);
+        } catch (NpsException npe) {
+            return new ResponseEntity<WorkflowEntity>(workflowEntity, HttpStatus.NOT_FOUND);
         }
 
     }
 
     @GetMapping("/workflow/YjbYp/{YjbYpId}")
-    public Optional<Set<WorkflowEntity>> findWorkflowByYjbYpId(@PathVariable("YjbYpId") Long YjbYpId){
+    public Optional<Set<WorkflowEntity>> findWorkflowByYjbYpId(@PathVariable("YjbYpId") Long YjbYpId) {
         log.info("inside Controller's findWorkflowByYjbYpId method");
         return Optional.ofNullable(workflowRepoService.findWorkflowByYjbYp(YjbYpId));
     }
@@ -60,41 +57,38 @@ public class WorkflowController {
     public ResponseEntity<WorkflowEntity> updateWorkflowEntity(@RequestBody WorkflowEntity workflowEntity) {
         log.info("inside Controller's updateWorkflowEntity method");
 
-        if (workflowEntity == null || workflowEntity.getId() == null) {
-            Re;
+        WorkflowEntity existedWFE = null;
 
+        try {
+            existedWFE = workflowRepoService.findWorkflowById(workflowEntity.getId());
+
+            existedWFE.setMetadata(workflowEntity.getMetadata());
+            existedWFE.setCreated(workflowEntity.getCreated());
+            existedWFE.setTaskStatus(workflowEntity.getTaskStatus());
+            existedWFE.setCreatedBy(workflowEntity.getCreatedBy());
+            existedWFE.setKpfConfirmed(workflowEntity.getKpfConfirmed());
+            existedWFE.setWorkflowState(workflowEntity.getWorkflowState());
+            existedWFE.setYjbYp(workflowEntity.getYjbYp());
+            existedWFE.setModified(workflowEntity.getModified());
+            existedWFE.setModifiedBy(workflowEntity.getModifiedBy());
+            existedWFE.setProcess(workflowEntity.getProcess());
+            existedWFE.setTaskId(workflowEntity.getTaskId());
+            existedWFE.setPreviousState(workflowEntity.getPreviousState());
+            existedWFE.setTaskMetadata(workflowEntity.getTaskMetadata());
+
+            return new ResponseEntity<WorkflowEntity>(workflowRepoService.saveWorkFlowEntity(existedWFE), HttpStatus.CREATED);
+
+        } catch (NpsException npe) {
+            return new ResponseEntity<WorkflowEntity>(workflowEntity, HttpStatus.NOT_FOUND);
         }
-        Optional<WorkflowEntity> optionalRecord = Optional.ofNullable(workflowRepoService.findWorkflowById(workflowEntity.getId()));
-        if (optionalRecord.isEmpty()) {
-            throw new NotFoundException("WorkflowEntity with ID " + optionalRecord.get().getId() + " does not exist.");
-        }
 
-        WorkflowEntity existedWFE = optionalRecord.get();
-
-        existedWFE.setMetadata(workflowEntity.getMetadata());
-        existedWFE.setCreated(workflowEntity.getCreated());
-        existedWFE.setTaskStatus(workflowEntity.getTaskStatus());
-        existedWFE.setCreatedBy(workflowEntity.getCreatedBy());
-        existedWFE.setKpfConfirmed(workflowEntity.getKpfConfirmed());
-        existedWFE.setWorkflowState(workflowEntity.getWorkflowState());
-        existedWFE.setYjbYp(workflowEntity.getYjbYp());
-        existedWFE.setModified(workflowEntity.getModified());
-        existedWFE.setModifiedBy(workflowEntity.getModifiedBy());
-        existedWFE.setProcess(workflowEntity.getProcess());
-        existedWFE.setTaskId(workflowEntity.getTaskId());
-        existedWFE.setPreviousState(workflowEntity.getPreviousState());
-        existedWFE.setTaskMetadata(workflowEntity.getTaskMetadata());
-
-
-        ResponseEntity<WorkflowEntity> responseEntity = new ResponseEntity<>(workflowRepoService.saveWorkFlowEntity(existedWFE),HttpStatus.CREATED);
-        return responseEntity;
     }
 
     //"/api/v1/placements/getplacement/{id}/ypid/{yjb_yp_id}"
     @GetMapping("/api/v1/placements/getplacement/{id}/ypid/{yjb_yp_id}")
-    public Placement getWorkflowWithPlacement(@PathVariable("id") Long placementId,@PathVariable("yjb_yp_id") Long YjbYpId){
+    public Placement getWorkflowWithPlacement(@PathVariable("id") Long placementId, @PathVariable("yjb_yp_id") Long YjbYpId) {
         log.info("Inside getWorkflowWithPlacement of WorkflowController");
-        Placement placement = workflowRepoService.getWorkflowWithPlacement(placementId,YjbYpId);
+        Placement placement = workflowRepoService.getWorkflowWithPlacement(placementId, YjbYpId);
 
         return placement;
     }
