@@ -52,7 +52,7 @@ public class WorkflowController {
         log.info("inside Controller's findWorkflowByYjbYpId method");
         Set<WorkflowEntity> set = new HashSet<>();
         try {
-             workflowRepoService.findWorkflowByYjbYp(YjbYpId);
+            set = workflowRepoService.findWorkflowByYjbYp(YjbYpId);
             return new ResponseEntity<Set<WorkflowEntity>>(set, HttpStatus.FOUND);
         } catch (NpsException e) {
             return new ResponseEntity<Set<WorkflowEntity>>(set, HttpStatus.NOT_FOUND);

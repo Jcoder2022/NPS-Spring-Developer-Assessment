@@ -62,6 +62,7 @@ public class WorkflowControllerTests {
     static void setup() {
         log.info("@BeforeAll- executes once before all test methods in this class");
     }
+
     @BeforeEach
     void init() {
         // We would need this line if we would not use the MockitoExtension
@@ -106,10 +107,8 @@ public class WorkflowControllerTests {
                 .andReturn().getResponse();
 
         // then
-        Assertions.assertEquals(HttpStatus.OK.value(),response.getStatus());
-        Assertions.assertEquals(jsonWorkflowEntity.write(workflowEntity).getJson(),response.getContentAsString());
-
-
+        Assertions.assertEquals(HttpStatus.OK.value(), response.getStatus());
+        Assertions.assertEquals(jsonWorkflowEntity.write(workflowEntity).getJson(), response.getContentAsString());
 
 
         // Create and test a controller GET endpoint to retrieve an entry from the workflow table
@@ -122,8 +121,6 @@ public class WorkflowControllerTests {
 
 
     }
-
-
 
 
     @Test
@@ -162,9 +159,8 @@ public class WorkflowControllerTests {
                 .andReturn().getResponse();
 
         // then
-        Assertions.assertEquals(HttpStatus.OK.value(),response.getStatus());
+        Assertions.assertEquals(HttpStatus.OK.value(), response.getStatus());
         //Assertions.assertEquals(jsonWorkflowEntity.write(s.).getJson(),response.getContentAsString());
-
 
 
         // Create and test a controller GET endpoint to retrieve a set of entries from the workflow table
@@ -240,7 +236,7 @@ public class WorkflowControllerTests {
                 .taskMetadata(null).build());
 
         //when
-        MockHttpServletResponse response =  mockMvc
+        MockHttpServletResponse response = mockMvc
                 .perform(
                         post("/api/v1/tests-controller/createWorkflow")
                                 .contentType(MediaType.APPLICATION_JSON)
@@ -251,9 +247,7 @@ public class WorkflowControllerTests {
         String content = response.getContentAsString();
         WorkflowEntity wfe = jsonWorkflowEntity.parseObject(content);
         Assertions.assertNotNull(wfe.getId());
-        Assertions.assertEquals(HttpStatus.CREATED.value(),response.getStatus());
-
-
+        Assertions.assertEquals(HttpStatus.CREATED.value(), response.getStatus());
 
 
         // Create and test a controller POST endpoint to create a new entry within the workflow table
@@ -280,10 +274,9 @@ public class WorkflowControllerTests {
                 .andReturn().getResponse();
 
         // then
-        Assertions.assertEquals(HttpStatus.NOT_FOUND.value(),response.getStatus());
-        Assertions.assertEquals(true,response.getContentAsString().isEmpty());
+        Assertions.assertEquals(HttpStatus.NOT_FOUND.value(), response.getStatus());
+        Assertions.assertEquals(true, response.getContentAsString().isEmpty());
     }
-
 
 
     @Test
@@ -347,10 +340,9 @@ public class WorkflowControllerTests {
         WorkflowEntity updatedWorkflowEntity = jsonWorkflowEntity.parseObject(content);
 
         // then
-        Assertions.assertEquals(HttpStatus.CREATED.value(),response.getStatus());
-        Assertions.assertEquals(true,updatedWorkflowEntity instanceof WorkflowEntity );
-        Assertions.assertEquals(updatedWFE.getWorkflowState(),updatedWorkflowEntity.getWorkflowState());
-
+        Assertions.assertEquals(HttpStatus.CREATED.value(), response.getStatus());
+        Assertions.assertEquals(true, updatedWorkflowEntity instanceof WorkflowEntity);
+        Assertions.assertEquals(updatedWFE.getWorkflowState(), updatedWorkflowEntity.getWorkflowState());
 
 
         // Create and test a controller PUT endpoint to an existing entry within the workflow table
