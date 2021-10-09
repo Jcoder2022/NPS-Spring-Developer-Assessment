@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
@@ -47,9 +48,16 @@ public class WorkflowController {
     }
 
     @GetMapping("/workflow/YjbYp/{YjbYpId}")
-    public Optional<Set<WorkflowEntity>> findWorkflowByYjbYpId(@PathVariable("YjbYpId") Long YjbYpId) {
+    public ResponseEntity<Set<WorkflowEntity>> findWorkflowByYjbYpId(@PathVariable("YjbYpId") Long YjbYpId) {
         log.info("inside Controller's findWorkflowByYjbYpId method");
-        return Optional.ofNullable(workflowRepoService.findWorkflowByYjbYp(YjbYpId));
+        Set<WorkflowEntity> set = new HashSet<>();
+        try {
+             workflowRepoService.findWorkflowByYjbYp(YjbYpId);
+            return new ResponseEntity<Set<WorkflowEntity>>(set, HttpStatus.FOUND);
+        } catch (NpsException e) {
+            return new ResponseEntity<Set<WorkflowEntity>>(set, HttpStatus.NOT_FOUND);
+        }
+
     }
 
     @PutMapping("/updateWorkflow")
@@ -86,11 +94,14 @@ public class WorkflowController {
 
     //"/api/v1/placements/getplacement/{id}/ypid/{yjb_yp_id}"
     @GetMapping("/api/v1/placements/getplacement/{id}/ypid/{yjb_yp_id}")
-    public Placement getWorkflowWithPlacement(@PathVariable("id") Long placementId, @PathVariable("yjb_yp_id") Long YjbYpId) {
+    public ResponseEntity<Placement> getWorkflowWithPlacement(@PathVariable("id") Long placementId, @PathVariable("yjb_yp_id") Long YjbYpId) {
         log.info("Inside getWorkflowWithPlacement of WorkflowController");
         Placement placement = workflowRepoService.getWorkflowWithPlacement(placementId, YjbYpId);
 
-        return placement;
+        if(placement ==null)
+            return new ResponseEntity<Placement>(placement, HttpStatus.NOT_FOUND);
+        else
+            return new ResponseEntity<Placement>(placement, HttpStatus.FOUND);
     }
 
 

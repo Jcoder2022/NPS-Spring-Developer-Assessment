@@ -48,9 +48,13 @@ public class WorkflowRepoServiceImpl implements WorkflowRepoService {
     }
 
     @Override
-    public Set<WorkflowEntity> findWorkflowByYjbYp(Long YjbYp) {
+    public Set<WorkflowEntity> findWorkflowByYjbYp(Long YjbYp) throws NpsException {
         Set<WorkflowEntity> workflowentitiesByYjbYpId = new HashSet<WorkflowEntity>();
-        this.workflowRepo.findAllByYjbYp(YjbYp).forEach(wfp->workflowentitiesByYjbYpId.add(wfp));
+        Iterable<WorkflowEntity> iterator =  this.workflowRepo.findAllByYjbYp(YjbYp);
+        if(iterator==null)
+            throw new NpsException(NpsException.NotFoundException(YjbYp));
+        else
+            iterator.forEach(wfe -> workflowentitiesByYjbYpId.add( wfe));
         return workflowentitiesByYjbYpId;
     }
     @Override

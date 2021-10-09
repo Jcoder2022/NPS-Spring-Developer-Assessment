@@ -14,7 +14,7 @@ public interface WorkflowRepoService {
 
     public WorkflowEntity saveWorkFlowEntity(WorkflowEntity workflowEntity);
 
-    public Set<WorkflowEntity> findWorkflowByYjbYp(Long YjbYpId);
+    public Set<WorkflowEntity> findWorkflowByYjbYp(Long YjbYpId) throws NpsException;
 
     public List<WorkflowEntity> findAll();
 
