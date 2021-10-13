@@ -23,4 +23,11 @@ public interface WorkflowRepoService {
     public List<WorkflowEntity> findWorkflowEntityByWorkFlowState(String firstState,String secState, String thirdState);
 
     public List<WorkflowEntity> findWorkflowEntitysByYjbJP(Long firstVal,Long secVal, Long thirdVal);
+    public List<WorkflowEntity> findWorkflowEntityByCreated(String created);
+
+    public List<WorkflowEntity> findWorkflowEntityByModifiedTimeperiod(String gt,String lt);
+    public List<WorkflowEntity> findWorkflowEntityByProcessAndTaskStatus(String process,String taskStatus);
+    public List<Object> findIdYjbYpIdTaskStatusCriteriaOnCreatedBy(String createdBy);
+
+    public List<WorkflowEntity> findWorkflowEntityByProcess(String process);
 }

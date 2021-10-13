@@ -79,4 +79,24 @@ public class WorkflowRepoServiceImpl implements WorkflowRepoService {
     public List<WorkflowEntity> findWorkflowEntitysByYjbJP(Long firstVal,Long secVal, Long thirdVal){
         return workflowRepo.findWorkflowEntitysByYjbJP(firstVal,secVal,thirdVal);
     }
+
+    public List<WorkflowEntity> findWorkflowEntityByCreated(String created){
+        return workflowRepo.findWorkflowEntityByCreated(created);
+    }
+
+    public List<WorkflowEntity> findWorkflowEntityByModifiedTimeperiod(String gt,String lt){
+        return workflowRepo.findWorkflowEntityByModifiedTimeperiod(gt,lt);
+    }
+
+    public List<WorkflowEntity> findWorkflowEntityByProcessAndTaskStatus(String process,String taskStatus){
+        return workflowRepo.findWorkflowEntityByProcessAndTaskStatus(process,taskStatus);
+    }
+
+    public List<Object> findIdYjbYpIdTaskStatusCriteriaOnCreatedBy(String createdBy){
+        return workflowRepo.findIdYjbYpIdTaskStatusCriteriaOnCreatedBy(createdBy);
+    }
+    public List<WorkflowEntity> findWorkflowEntityByProcess(String process){
+        return workflowRepo.findWorkflowEntityByProcess(process);
+    }
+
 }

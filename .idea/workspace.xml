@@ -6,14 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="428a9916-8827-4b1d-82f3-f291b0aa3f39" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/entity/WorkflowEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/entity/WorkflowEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/repo/WorkflowRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/repo/WorkflowRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/WorkflowRepoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/WorkflowRepoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/impl/WorkflowRepoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/impl/WorkflowRepoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/setup/QueryProcess/H2JDBCUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/QueryProcess/H2JDBCUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/setup/QueryProcess/IProcessQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/QueryProcess/IProcessQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/setup/QueryProcess/ProcessQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/QueryProcess/ProcessQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/setup/QueryProcess/Transformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/QueryProcess/Transformer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/setup/SetupTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/setup/SetupTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -290,43 +285,9 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnWorkflowStateAsMentioned">
+  <component name="RunManager" selected="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnCreatedByAsMentioned">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GeneralTests.test2_shouldDemonstrateIdentificationOfMinAndMaxValues" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="dev-assessment" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.nps.devassessment.general.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.nps.devassessment.general" />
-      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.general.GeneralTests" />
-      <option name="METHOD_NAME" value="test2_shouldDemonstrateIdentificationOfMinAndMaxValues" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GeneralTests.test3_shouldDemonstrateModifyingAValueFromWithinALambda" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="dev-assessment" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.nps.devassessment.general.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.nps.devassessment.general" />
-      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.general.GeneralTests" />
-      <option name="METHOD_NAME" value="test3_shouldDemonstrateModifyingAValueFromWithinALambda" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -342,6 +303,40 @@
       <option name="PACKAGE_NAME" value="com.nps.devassessment.general" />
       <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.general.GeneralTests" />
       <option name="METHOD_NAME" value="test4_shouldDemonstrateUsingParallelProcesses" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SetupTests.test1_shouldReturnWorkflowCriteriaOnCreatedByAsMentioned" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dev-assessment" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nps.devassessment.setup.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nps.devassessment.setup" />
+      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.setup.SetupTests" />
+      <option name="METHOD_NAME" value="test1_shouldReturnWorkflowCriteriaOnCreatedByAsMentioned" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SetupTests.test1_shouldReturnWorkflowCriteriaOnCreatedDateAsMentioned" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dev-assessment" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nps.devassessment.setup.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nps.devassessment.setup" />
+      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.setup.SetupTests" />
+      <option name="METHOD_NAME" value="test1_shouldReturnWorkflowCriteriaOnCreatedDateAsMentioned" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
@@ -431,21 +426,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.GeneralTests.test2_shouldDemonstrateIdentificationOfMinAndMaxValues" />
-      <item itemvalue="JUnit.GeneralTests.test3_shouldDemonstrateModifyingAValueFromWithinALambda" />
       <item itemvalue="JUnit.GeneralTests.test4_shouldDemonstrateUsingParallelProcesses" />
       <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnWorkflowStateAsMentioned" />
       <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnProcessAsTransferPlannedAsMentioned" />
       <item itemvalue="Spring Boot.DevAssessmentApplication (1)" />
       <item itemvalue="Spring Boot.DevAssessmentApplication" />
+      <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnCreatedDateAsMentioned" />
+      <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnCreatedByAsMentioned" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnCreatedByAsMentioned" />
+        <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnCreatedDateAsMentioned" />
         <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnWorkflowStateAsMentioned" />
         <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnProcessAsTransferPlannedAsMentioned" />
         <item itemvalue="JUnit.GeneralTests.test4_shouldDemonstrateUsingParallelProcesses" />
-        <item itemvalue="JUnit.GeneralTests.test3_shouldDemonstrateModifyingAValueFromWithinALambda" />
-        <item itemvalue="JUnit.GeneralTests.test2_shouldDemonstrateIdentificationOfMinAndMaxValues" />
       </list>
     </recent_temporary>
   </component>
@@ -469,7 +464,7 @@
       <workItem from="1633181342805" duration="39199000" />
       <workItem from="1633335480797" duration="3957000" />
       <workItem from="1633709222454" duration="13888000" />
-      <workItem from="1634038944440" duration="4705000" />
+      <workItem from="1634038944440" duration="7105000" />
     </task>
     <servers />
   </component>

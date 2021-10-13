@@ -92,10 +92,10 @@ public class SetupTests {
 
     @Test
     public void test1_shouldReturnWorkflowCriteriaOnCreatedDateAsMentioned() throws SQLException {
-        String query = builder.append("SELECT * FROM WORKFLOW WHERE CREATED > '2021-02-01'").toString();
+        //String query = builder.append("SELECT * FROM WORKFLOW WHERE CREATED > '2021-02-01'").toString();
 
 
-        List<WorkflowEntity> workflowEntities = processQuery.executeQuery(query);
+        List<WorkflowEntity> workflowEntities = this.workflowRepoService.findWorkflowEntityByCreated("2021-02-01");
 
 
         log.info("Workflow - Criteria On Created Date - size of return list is {} ",workflowEntities.size() );
@@ -106,9 +106,8 @@ public class SetupTests {
 
     @Test
     public void test1_shouldReturnWorkflowCriteriaOnModifiedDateAsMentioned() throws SQLException {
-        String query = builder.append("SELECT * FROM WORKFLOW WHERE MODIFIED > '2020-01-01' and MODIFIED < '2021-03-01'").toString();
 
-        List<WorkflowEntity> workflowEntities = processQuery.executeQuery(query);
+        List<WorkflowEntity> workflowEntities = this.workflowRepoService.findWorkflowEntityByModifiedTimeperiod( "2020-01-01", "2021-03-01");
 
         log.info("Workflow - Criteria On Modified Date - size of return list is {} ",workflowEntities.size() );
 
@@ -119,9 +118,8 @@ public class SetupTests {
 
     @Test
     public void test1_shouldReturnWorkflowCriteriaOnProcessAsMentioned() throws SQLException {
-        String query = builder.append("SELECT * FROM WORKFLOW WHERE PROCESS='placementProcess' and TASK_STATUS!='ADMITTED'").toString();
 
-        List<WorkflowEntity> workflowEntities = processQuery.executeQuery(query);
+        List<WorkflowEntity> workflowEntities = workflowRepoService.findWorkflowEntityByProcessAndTaskStatus("placementProcess","ADMITTED");
 
         log.info("Workflow - Criteria On Process and TASK_STATUS  - size of return list is {} ",workflowEntities.size() );
 
@@ -131,9 +129,8 @@ public class SetupTests {
 
     @Test
     public void test1_shouldReturnWorkflowCriteriaOnCreatedByAsMentioned() throws SQLException {
-        String query = builder.append("SELECT ID, YJB_YP_ID,TASK_STATUS FROM WORKFLOW WHERE CREATED_BY='lee.everitt'").toString();
 
-        List<WorkflowEntity> workflowEntities = processQuery.executeQuery(query);
+        List<Object> workflowEntities = workflowRepoService.findIdYjbYpIdTaskStatusCriteriaOnCreatedBy("lee.everitt");
 
         log.info("Workflow - Criteria On CreatedBy  - size of return list is {} ",workflowEntities.size() );
 
@@ -144,9 +141,8 @@ public class SetupTests {
 
     @Test
     public void test1_shouldReturnWorkflowCriteriaOnProcessAsTransferPlannedAsMentioned() throws SQLException {
-        String query =  builder.append("SELECT TOP 10 * FROM WORKFLOW WHERE PROCESS='transferPlanned' ORDER BY ID ASC").toString();
 
-        List<WorkflowEntity> workflowEntities = processQuery.executeQuery(query);
+        List<WorkflowEntity> workflowEntities = workflowRepoService.findWorkflowEntityByProcess("transferPlanned");
 
         log.info("Workflow -  Top 10 Criteria On Process As TransferPlanned In ASC order  - size of return list is {} ",workflowEntities.size() );
 
