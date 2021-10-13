@@ -72,5 +72,11 @@ public class WorkflowRepoServiceImpl implements WorkflowRepoService {
         return placement;
     }
 
+    public List<WorkflowEntity> findWorkflowEntityByWorkFlowState(String firstState,String secState, String thirdState){
+        return workflowRepo.findWorkflowEntityByWorkFlowState(firstState,secState,thirdState);
+    }
 
+    public List<WorkflowEntity> findWorkflowEntitysByYjbJP(Long firstVal,Long secVal, Long thirdVal){
+        return workflowRepo.findWorkflowEntitysByYjbJP(firstVal,secVal,thirdVal);
+    }
 }

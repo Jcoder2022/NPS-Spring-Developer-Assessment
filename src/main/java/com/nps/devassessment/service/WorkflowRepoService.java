@@ -19,4 +19,8 @@ public interface WorkflowRepoService {
     public List<WorkflowEntity> findAll();
 
    public Placement getWorkflowWithPlacement(Long placementId, Long YjbYpId);
+
+    public List<WorkflowEntity> findWorkflowEntityByWorkFlowState(String firstState,String secState, String thirdState);
+
+    public List<WorkflowEntity> findWorkflowEntitysByYjbJP(Long firstVal,Long secVal, Long thirdVal);
 }

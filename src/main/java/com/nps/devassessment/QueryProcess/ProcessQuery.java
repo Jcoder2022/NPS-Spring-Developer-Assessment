@@ -1,4 +1,4 @@
-package com.nps.devassessment.setup.QueryProcess;
+package com.nps.devassessment.QueryProcess;
 
 import com.nps.devassessment.entity.WorkflowEntity;
 

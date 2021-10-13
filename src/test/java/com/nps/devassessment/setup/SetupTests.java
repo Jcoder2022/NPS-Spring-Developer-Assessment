@@ -2,9 +2,10 @@ package com.nps.devassessment.setup;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nps.devassessment.entity.WorkflowEntity;
+import com.nps.devassessment.exception.NpsException;
 import com.nps.devassessment.service.WorkflowRepoService;
-import com.nps.devassessment.setup.QueryProcess.IProcessQuery;
-import com.nps.devassessment.setup.QueryProcess.ProcessQuery;
+import com.nps.devassessment.QueryProcess.IProcessQuery;
+import com.nps.devassessment.QueryProcess.ProcessQuery;
 import org.hibernate.cfg.NotYetImplementedException;
 //import org.junit.Assert;
 //import org.junit.Test;
@@ -50,7 +51,7 @@ public class SetupTests {
 
     // NOTE - This is a sample
     @Test
-    public void test0_shouldProvideASampleOfAWorkingRepoCall() {
+    public void test0_shouldProvideASampleOfAWorkingRepoCall() throws NpsException {
 
         // start test
         log.info("Starting test0 to demonstrate working repo call...");
@@ -70,12 +71,10 @@ public class SetupTests {
     @Test
     public void test1_shouldReturnWorkflowCriteriaOnWorkflowStateAsMentioned() throws SQLException {
 
-        String query = builder.append("SELECT * FROM WORKFLOW WHERE WORKFLOW_STATE='IN PROGRESS' OR WORKFLOW_STATE='CANCELLED' OR WORKFLOW_STATE='ADMITTED'").toString();
 
-        List<WorkflowEntity> workflowEntities = processQuery.executeQuery(query);
+        List<WorkflowEntity> workflowEntities = this.workflowRepoService.findWorkflowEntityByWorkFlowState("IN PROGRESS","CANCELLED","ADMITTED");
 
-
-        log.info("Workflow - Criteria On WorkflowState - size of return list is {} ",workflowEntities.size() );
+                log.info("Workflow - Criteria On WorkflowState - size of return list is {} ",workflowEntities.size() );
 
         Assertions.assertNotNull(workflowEntities.size());
     }
@@ -83,10 +82,8 @@ public class SetupTests {
     @Test
     public void test1_shouldReturnWorkflowCriteriaOnYJB_YP_IDAsMentioned() throws SQLException {
 
-        String query =builder.append("SELECT * FROM WORKFLOW WHERE YJB_YP_ID IN (30848, 32524, 28117)").toString();
 
-        List<WorkflowEntity> workflowEntities = processQuery.executeQuery(query);
-
+        List<WorkflowEntity> workflowEntities = this.workflowRepoService.findWorkflowEntitysByYjbJP(30848L, 32524L, 28117L);
 
         log.info("Workflow - Criteria On YJB_YP_ID - size of return list is {} ",workflowEntities.size() );
         Assertions.assertNotNull(workflowEntities.size());

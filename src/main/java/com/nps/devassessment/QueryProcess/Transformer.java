@@ -1,11 +1,9 @@
-package com.nps.devassessment.setup.QueryProcess;
+package com.nps.devassessment.QueryProcess;
 
 import com.nps.devassessment.entity.WorkflowEntity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -8,15 +8,13 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 
-@Entity
+@Entity(name = "Workflow")
 @Table(name = "Workflow")
-@NamedQuery(name = "Workflow.findAll", query = "SELECT w FROM WorkflowEntity w")
 @Builder
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
-
 public class WorkflowEntity implements Serializable {
 
     @Id
