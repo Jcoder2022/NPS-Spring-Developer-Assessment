@@ -7,9 +7,6 @@
     <list default="true" id="428a9916-8827-4b1d-82f3-f291b0aa3f39" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/repo/WorkflowRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/repo/WorkflowRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/WorkflowRepoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/WorkflowRepoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/impl/WorkflowRepoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/nps/devassessment/service/impl/WorkflowRepoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/setup/SetupTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/nps/devassessment/setup/SetupTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,24 +282,41 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnCreatedByAsMentioned">
+  <component name="RunManager" selected="JUnit.AlgorithTest.isNumberValidFailureTest">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GeneralTests.test4_shouldDemonstrateUsingParallelProcesses" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AlgorithTest.isNumberValidFailureTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="dev-assessment" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.nps.devassessment.general.*" />
+          <option name="PATTERN" value="com.nps.devassessment.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.nps.devassessment.general" />
-      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.general.GeneralTests" />
-      <option name="METHOD_NAME" value="test4_shouldDemonstrateUsingParallelProcesses" />
+      <option name="PACKAGE_NAME" value="com.nps.devassessment" />
+      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.AlgorithTest" />
+      <option name="METHOD_NAME" value="isNumberValidFailureTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AlgorithTest.isNumberValidSuccessScenarioTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="dev-assessment" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.nps.devassessment.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.nps.devassessment" />
+      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.AlgorithTest" />
+      <option name="METHOD_NAME" value="isNumberValidSuccessScenarioTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
@@ -337,23 +351,6 @@
       <option name="PACKAGE_NAME" value="com.nps.devassessment.setup" />
       <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.setup.SetupTests" />
       <option name="METHOD_NAME" value="test1_shouldReturnWorkflowCriteriaOnCreatedDateAsMentioned" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SetupTests.test1_shouldReturnWorkflowCriteriaOnProcessAsTransferPlannedAsMentioned" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="dev-assessment" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.nps.devassessment.setup.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.nps.devassessment.setup" />
-      <option name="MAIN_CLASS_NAME" value="com.nps.devassessment.setup.SetupTests" />
-      <option name="METHOD_NAME" value="test1_shouldReturnWorkflowCriteriaOnProcessAsTransferPlannedAsMentioned" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <method v="2">
@@ -426,21 +423,21 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.GeneralTests.test4_shouldDemonstrateUsingParallelProcesses" />
       <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnWorkflowStateAsMentioned" />
-      <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnProcessAsTransferPlannedAsMentioned" />
-      <item itemvalue="Spring Boot.DevAssessmentApplication (1)" />
-      <item itemvalue="Spring Boot.DevAssessmentApplication" />
       <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnCreatedDateAsMentioned" />
       <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnCreatedByAsMentioned" />
+      <item itemvalue="JUnit.AlgorithTest.isNumberValidSuccessScenarioTest" />
+      <item itemvalue="JUnit.AlgorithTest.isNumberValidFailureTest" />
+      <item itemvalue="Spring Boot.DevAssessmentApplication (1)" />
+      <item itemvalue="Spring Boot.DevAssessmentApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AlgorithTest.isNumberValidFailureTest" />
+        <item itemvalue="JUnit.AlgorithTest.isNumberValidSuccessScenarioTest" />
         <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnCreatedByAsMentioned" />
         <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnCreatedDateAsMentioned" />
         <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnWorkflowStateAsMentioned" />
-        <item itemvalue="JUnit.SetupTests.test1_shouldReturnWorkflowCriteriaOnProcessAsTransferPlannedAsMentioned" />
-        <item itemvalue="JUnit.GeneralTests.test4_shouldDemonstrateUsingParallelProcesses" />
       </list>
     </recent_temporary>
   </component>
@@ -464,7 +461,13 @@
       <workItem from="1633181342805" duration="39199000" />
       <workItem from="1633335480797" duration="3957000" />
       <workItem from="1633709222454" duration="13888000" />
-      <workItem from="1634038944440" duration="7105000" />
+      <workItem from="1634038944440" duration="9897000" />
+      <workItem from="1634402098108" duration="938000" />
+      <workItem from="1634600856387" duration="878000" />
+      <workItem from="1634642462925" duration="551000" />
+      <workItem from="1634732162835" duration="1175000" />
+      <workItem from="1635171117480" duration="3180000" />
+      <workItem from="1635706876029" duration="1738000" />
     </task>
     <servers />
   </component>

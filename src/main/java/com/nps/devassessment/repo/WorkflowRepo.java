@@ -1,20 +1,26 @@
 package com.nps.devassessment.repo;
 
 import com.nps.devassessment.entity.WorkflowEntity;
-import org.hibernate.cfg.NotYetImplementedException;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDateTime;
-import java.util.Comparator;
+import java.sql.Timestamp;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 public interface WorkflowRepo extends JpaRepository<WorkflowEntity, Long> {
+
+
+    List<WorkflowEntity> findByWorkflowState(String workflowState);
+    List<WorkflowEntity> findByYjbYpIn(List<Long> ids);
+    List<WorkflowEntity> findByCreatedAfter(Timestamp afterDate);
+    List<WorkflowEntity> findByModifiedBetween(Timestamp beforeDate, Timestamp afterDate);
+    List<WorkflowEntity> findByProcessAndTaskStatusNot(String process, String taskStatus);
+    @Query(value="select new com.nps.devassessment.model.Workflow(w.id, w.yjbYp, w.taskStatus) from Workflow w where w.createdBy = ?1")
+    List<WorkflowEntity> findIdAndYkbYpAndTaskStatusByCreatedBy(String createdBy);
+    List<WorkflowEntity> findByProcess(String process, Pageable pageable);
 
 
     Iterable<WorkflowEntity> findAllByYjbYp(Long YjbYpId);
@@ -70,10 +76,6 @@ public interface WorkflowRepo extends JpaRepository<WorkflowEntity, Long> {
     // Once you have paged through the entire table, write the amount of pages to the log
 
 
-    //Select workflows by workflow_state = a given status  (e.g. “IN PROGRESS”, “CANCELLED”, “ADMITTED”)
-    //List<WorkflowEntity> findAllByWorkflowState
-
-
-
+    //@Query()
 
 }
